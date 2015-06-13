@@ -1,5 +1,7 @@
 package com.cavernwars.entities.aboveground;
 
+import java.awt.Rectangle;
+
 import com.cavernwars.Controller;
 import com.cavernwars.entities.Entity;
 
@@ -33,13 +35,18 @@ public class AGKing extends Entity {
          * -1 is used to denote an infinite amount of time.
          */
         path = Entity.AGPATH;
-        this.setSprite("/resources/TestSprite.png");
-        this.setX(path[0][0]);
-        this.setY(path[0][1]);
-        this.setMaxHealth((int)session.AGLevels[0] + 8);
-        this.setHealth((int)session.AGLevels[0] + 8);
-        this.setSpeed(1);
-        this.setDamage((int)session.AGLevels[0] + 5);
+        setSprite("/resources/TestSprite.png");
+        setX(path[0][0]);
+        setY(path[0][1]);
+        setMaxHealth((int)session.AGLevels[0] + 8);
+        setHealth((int)session.AGLevels[0] + 8);
+        setSpeed(1);
+        setDamage((int)session.AGLevels[0] + 5);
+
+        hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
+        facingRight = true;
+        onLadder = false;
+        attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1]);
     }
 
     @Override
@@ -66,9 +73,16 @@ public class AGKing extends Entity {
                 int dx , dy;
                 dx = (path[pathCounter + 1][0] - path[pathCounter][0]) / path[pathCounter][2] * getSpeed() / 10;
                 dy = (path[pathCounter + 1][1] - path[pathCounter][1]) / path[pathCounter][2] * getSpeed() / 10;
+                facingRight = dx > 0;
+                onLadder = dx == 0;
                 setX(getX() + dx);
                 setY(getY() + dy);
             }
+        }
+        if (facingRight) {
+            attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1]);
+        } else {
+            attackbox = new Rectangle(getX() - 40, getY() , Entity.SPRITESIZE[0] + 80 , Entity.SPRITESIZE[1]);
         }
     }
 }
