@@ -35,6 +35,7 @@ public class Engineer extends Entity {
         this.setSprite("/resources/TestSprite.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
+        this.setMaxHealth((int)session.AGLevels[1] + 4);
         this.setHealth((int)session.AGLevels[1] + 4);
         this.setSpeed(1);
         this.setDamage((int)session.AGLevels[1] + 1);

@@ -36,6 +36,7 @@ public class AGKing extends Entity {
         this.setSprite("/resources/TestSprite.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
+        this.setMaxHealth((int)session.AGLevels[0] + 8);
         this.setHealth((int)session.AGLevels[0] + 8);
         this.setSpeed(1);
         this.setDamage((int)session.AGLevels[0] + 5);
