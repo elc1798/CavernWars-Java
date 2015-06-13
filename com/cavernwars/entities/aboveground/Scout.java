@@ -1,5 +1,7 @@
 package com.cavernwars.entities.aboveground;
 
+import java.awt.Rectangle;
+
 import com.cavernwars.Controller;
 import com.cavernwars.entities.Entity;
 
@@ -12,7 +14,7 @@ import com.cavernwars.entities.Entity;
  * Damage: 2 + Level
  *
  * Special:
- * This unit is range, depends on it's level.
+ * This unit is ranged, depends on it's level.
  */
 public class Scout extends Entity {
 
@@ -36,6 +38,11 @@ public class Scout extends Entity {
         this.setHealth((int)session.AGLevels[4] + 2);
         this.setSpeed(2);
         this.setDamage((int)session.AGLevels[4] + 2);
+
+        hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
+        facingRight = true;
+        onLadder = false;
+        attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 150 , Entity.SPRITESIZE[1]);
     }
 
     @Override
@@ -62,9 +69,16 @@ public class Scout extends Entity {
                 int dx , dy;
                 dx = (path[pathCounter + 1][0] - path[pathCounter][0]) / path[pathCounter][2] * getSpeed() / 10;
                 dy = (path[pathCounter + 1][1] - path[pathCounter][1]) / path[pathCounter][2] * getSpeed() / 10;
+                facingRight = dx > 0;
+                onLadder = dx == 0;
                 setX(getX() + dx);
                 setY(getY() + dy);
             }
+        }
+        if (facingRight) {
+            attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 150 , Entity.SPRITESIZE[1]);
+        } else {
+            attackbox = new Rectangle(getX() - 150, getY() , Entity.SPRITESIZE[0] + 300 , Entity.SPRITESIZE[1]);
         }
     }
 }
