@@ -1,6 +1,7 @@
 package com.cavernwars.entities;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,6 +10,7 @@ import javax.imageio.ImageIO;
 
 public abstract class Entity {
 
+    // Unit information:
     private int x;
     private int y;
     private int maxHealth;
@@ -21,6 +23,12 @@ public abstract class Entity {
     private int damage;
     private BufferedImage sprite;
 
+    // Data required for unit movement and attacking
+    public Rectangle hitbox;
+    public Rectangle attackbox;
+    public boolean facingRight;
+
+    // Get functions for unit information
     public int getX() {return x;}
     public int getY() {return y;}
     public int getMaxHealth() {return maxHealth;};
@@ -66,7 +74,7 @@ public abstract class Entity {
         {120 , 80 , -1}
     };
 
-
+    // Set functions for unit information
     public void setX(int _x) {
         x = _x;
     }
@@ -102,6 +110,7 @@ public abstract class Entity {
         }
     }
 
+    // Unit gameplay functions
     public void move() {}
     public void attack() {}
     public void special() {}
