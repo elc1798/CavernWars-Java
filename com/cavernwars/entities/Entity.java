@@ -17,7 +17,6 @@ public abstract class Entity {
      * speed 3 should arrive in n/3, etc.
      */
     private int speed;
-    private int[][] path;
     private BufferedImage sprite;
 
     public int getX() {return x;}
@@ -26,8 +25,43 @@ public abstract class Entity {
     public int getSpeed() {return speed;}
     public BufferedImage getSprite() {return sprite;}
 
+    // Constants for Entities
     public static final int[] SPRITESIZE = {20 , 20};
-    
+    public static final int[][] AGPATH = {
+        {100 , 80 , 10},
+        {500 , 80 , 0},
+        {510 , 120 , 1},
+        {450 , 160 , 8},
+        {5 , 160 , 6},
+        {5 , 235 , 10},
+        {500 , 235 , 6},
+        {500 , 310 , 10},
+        {5 , 310 , 6},
+        {5 , 400 , 10},
+        {500 , 400 , 6},
+        {500 , 425 , 10},
+        {5 , 425 , 8},
+        {5 , 550 , 10},
+        {430 , 550 , -1}
+    };
+    public static final int[][] UGPATH = {
+        {430 , 550 , 10},
+        {5 , 550 , 8},
+        {5 , 425 , 10},
+        {500 , 425 , 6},
+        {500 , 400 , 10},
+        {5 , 400 , 6},
+        {5 , 310 , 10},
+        {500 , 310 , 6},
+        {500 , 235 , 10},
+        {5 , 235 , 6},
+        {5 , 160 , 8},
+        {450 , 160 , 4},
+        {510 , 120 , 0},
+        {500 , 80 , 10},
+        {120 , 80 , -1}
+    };
+
 
     public void setX(int _x) {
         x = _x;

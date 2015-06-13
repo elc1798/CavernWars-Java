@@ -7,11 +7,6 @@ import com.cavernwars.entities.Entity;
 
 public class Engineer extends Entity {
 
-    private int x;
-    private int y;
-    private int health;
-    private int speed;
-    private BufferedImage sprite;
     private Controller session;
     private int[][] path;
 
@@ -24,23 +19,7 @@ public class Engineer extends Entity {
          * {xcoor to start at , ycoor to start at , seconds to reach next destination}
          * -1 is used to denote an infinite amount of time.
          */
-        path = new int[][]{
-                {100 , 80 , 10},
-                {500 , 80 , 0},
-                {510 , 120 , 1},
-                {450 , 160 , 8},
-                {5 , 160 , 6},
-                {5 , 235 , 10},
-                {500 , 235 , 6},
-                {500 , 310 , 10},
-                {5 , 310 , 6},
-                {5 , 400 , 10},
-                {500 , 400 , 6},
-                {500 , 425 , 10},
-                {5 , 425 , 8},
-                {5 , 550 , 10},
-                {430 , 550 , -1}
-        };
+        path = Entity.AGPATH;
         this.setSprite("/resources/TestSprite.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
