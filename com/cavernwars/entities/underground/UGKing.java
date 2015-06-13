@@ -1,5 +1,5 @@
 package com.cavernwars.entities.underground;
 
-public class King {
+public class UGKing {
 
 }
