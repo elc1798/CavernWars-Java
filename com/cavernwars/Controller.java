@@ -18,10 +18,37 @@ public class Controller extends JFrame {
     public ArrayList<Entity> aboveGrounders = new ArrayList<Entity>();
     public ArrayList<Entity> underGrounders = new ArrayList<Entity>();
 
+    /*
+     * AGLevels Contents:
+     * Index | Data
+     * 0 | (AG)King
+     * 1 | Engineer
+     * 2 | Knight
+     * 3 | Priest
+     * 4 | Scout
+     */
+    public float[] AGLevels = new float[5];
+    /*
+     * UGLevels Contents:
+     * Index | Data
+     * 0 | (UG)King
+     * 1 | Berserker
+     * 2 | Brawler
+     * 3 | Charger
+     * 4 | Miner
+     */
+    public float[] UGLevels = new float[5];
+
     public Controller() {
         startGFX();
         startMouseInterpreter();
         aboveGrounders.add(new Engineer(this));
+
+        for (int i = 0; i < 5; i++) {
+            AGLevels[i] = 1;
+            UGLevels[i] = 1;
+        }
+
     }
 
     private void startGFX() {
