@@ -17,5 +17,6 @@ public class Controller extends JFrame {
         setTitle("CavernWars");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
+        setResizable(false);
     }
 }
