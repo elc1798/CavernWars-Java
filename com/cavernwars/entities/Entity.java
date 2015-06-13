@@ -11,6 +11,7 @@ public abstract class Entity {
 
     private int x;
     private int y;
+    private int maxHealth;
     private int health;
     /* Note the speed is a ratio. It should take an entity of speed 1 to arrive at the next
      * destination on its path in "n" amount of seconds. Speed 2 should arrive in n/2 seconds,
@@ -22,6 +23,7 @@ public abstract class Entity {
 
     public int getX() {return x;}
     public int getY() {return y;}
+    public int getMaxHealth() {return maxHealth;};
     public int getHealth() {return health;}
     public int getSpeed() {return speed;}
     public int getDamage() {return damage;}
@@ -73,8 +75,15 @@ public abstract class Entity {
         y = _y;
     }
 
+    public void setMaxHealth(int _mHealth) {
+        maxHealth = _mHealth;
+    }
+
     public void setHealth(int _health) {
         health = _health;
+        if (health > maxHealth) {
+            health = maxHealth;
+        }
     }
 
     public void setSpeed(int _speed) {
