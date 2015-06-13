@@ -32,7 +32,7 @@ public abstract class Entity {
     public static final int[][] AGPATH = {
         {100 , 80 , 10},
         {500 , 80 , 0},
-        {510 , 120 , 1},
+        {510 , 120 , 4},
         {450 , 160 , 8},
         {5 , 160 , 6},
         {5 , 235 , 10},

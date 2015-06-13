@@ -5,10 +5,17 @@ import com.cavernwars.entities.Entity;
 
 /*
  * Engineers are "AboveGround" or "AG" units.
+ * Cost: 300 + 50 * Level
  * Stats:
  * Health: 4 + Level
  * Speed: 1
  * Damage: 1 + Level
+ *
+ * Special:
+ * Defuses traps:
+ * Unit stops movement right before a trap and cannot attack.
+ * The trap will be removed after 3 seconds.
+ * If trap goes off via another unit triggering it, the engineer will continue moving.
  */
 public class Engineer extends Entity {
 

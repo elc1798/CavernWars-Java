@@ -4,11 +4,19 @@ import com.cavernwars.Controller;
 import com.cavernwars.entities.Entity;
 
 /*
- * Engineers are "AboveGround" or "AG" units.
+ * AGKings are "AboveGround" or "AG" units.
+ * Cost: 1000 + 100 * Level
  * Stats:
- * Health: 4 + Level
+ * Health: 8 + Level
  * Speed: 1
- * Damage: 1 + Level
+ * Damage: 5 + Level
+ *
+ * Special:
+ * Can only be unlocked after all units are over level 5
+ * All allied units that are currently alive will be healed.
+ * While this unit is alive, all other allied units will have
+ * doubled health and damage.
+ * There can only be one AGKing alive at a time.
  */
 public class AGKing extends Entity {
 
@@ -28,9 +36,9 @@ public class AGKing extends Entity {
         this.setSprite("/resources/TestSprite.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
-        this.setHealth((int)session.AGLevels[0] + 4);
+        this.setHealth((int)session.AGLevels[0] + 8);
         this.setSpeed(1);
-        this.setDamage((int)session.AGLevels[0] + 1);
+        this.setDamage((int)session.AGLevels[0] + 5);
     }
 
     @Override
