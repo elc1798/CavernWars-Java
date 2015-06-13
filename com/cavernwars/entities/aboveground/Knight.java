@@ -1,5 +1,7 @@
 package com.cavernwars.entities.aboveground;
 
+import java.awt.Rectangle;
+
 import com.cavernwars.Controller;
 import com.cavernwars.entities.Entity;
 
@@ -37,6 +39,11 @@ public class Knight extends Entity {
         this.setHealth((int)session.AGLevels[2] + 3);
         this.setSpeed(1);
         this.setDamage((int)(session.AGLevels[2] * 1.5) + 3);
+
+        hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
+        facingRight = true;
+        onLadder = false;
+        attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
     }
 
     @Override
@@ -63,9 +70,16 @@ public class Knight extends Entity {
                 int dx , dy;
                 dx = (path[pathCounter + 1][0] - path[pathCounter][0]) / path[pathCounter][2] * getSpeed() / 10;
                 dy = (path[pathCounter + 1][1] - path[pathCounter][1]) / path[pathCounter][2] * getSpeed() / 10;
+                facingRight = dx > 0;
+                onLadder = dx == 0;
                 setX(getX() + dx);
                 setY(getY() + dy);
             }
+        }
+        if (facingRight) {
+            attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
+        } else {
+            attackbox = new Rectangle(getX() - 30, getY() , Entity.SPRITESIZE[0] + 60 , Entity.SPRITESIZE[1]);
         }
     }
 }
