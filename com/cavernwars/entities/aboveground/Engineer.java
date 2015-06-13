@@ -1,10 +1,15 @@
 package com.cavernwars.entities.aboveground;
 
-import java.awt.image.BufferedImage;
-
 import com.cavernwars.Controller;
 import com.cavernwars.entities.Entity;
 
+/*
+ * Engineers are "AboveGround" or "AG" units.
+ * Stats:
+ * Health: 4 + Level
+ * Speed: 1
+ * Damage: 1 + Level
+ */
 public class Engineer extends Entity {
 
     private Controller session;
@@ -23,8 +28,9 @@ public class Engineer extends Entity {
         this.setSprite("/resources/TestSprite.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
-        this.setHealth(1);
+        this.setHealth((int)session.AGLevels[1] + 4);
         this.setSpeed(1);
+        this.setDamage((int)session.AGLevels[1] + 1);
     }
 
     @Override
@@ -42,7 +48,6 @@ public class Engineer extends Entity {
         }
         if (pathCounter + 1 < path.length && getX() == path[pathCounter + 1][0] && getY() == path[pathCounter + 1][1]) {
             pathCounter++;
-            System.out.printf("%3d , %3d , %3d , %3d\n" , path[pathCounter][0] , path[pathCounter][1] , getX() , getY());
         }
         if (path[pathCounter][2] != -1) {
             if (path[pathCounter][2] == 0) {
