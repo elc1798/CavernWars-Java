@@ -17,12 +17,14 @@ public abstract class Entity {
      * speed 3 should arrive in n/3, etc.
      */
     private int speed;
+    private int damage;
     private BufferedImage sprite;
 
     public int getX() {return x;}
     public int getY() {return y;}
     public int getHealth() {return health;}
     public int getSpeed() {return speed;}
+    public int getDamage() {return damage;}
     public BufferedImage getSprite() {return sprite;}
 
     // Constants for Entities
@@ -77,6 +79,10 @@ public abstract class Entity {
 
     public void setSpeed(int _speed) {
         speed = _speed;
+    }
+
+    public void setDamage(int _damage) {
+        damage = _damage;
     }
 
     public void setSprite(String filename) {
