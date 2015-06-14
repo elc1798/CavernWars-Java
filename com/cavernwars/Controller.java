@@ -177,6 +177,13 @@ public class Controller extends JFrame {
     }
 
     public void update() {
+        // Check for dead base
+        if (AIHealth <= 0) {
+            graphicsSession.endScreen(1);
+        } else if (playerHealth <= 0) {
+            graphicsSession.endScreen(0);
+        }
+
         // Update killQueue!
         while (!killQueue.isEmpty()) {
             int ground = killQueue.peek().ground;

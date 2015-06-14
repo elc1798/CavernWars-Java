@@ -19,6 +19,7 @@ public class GfxRenderer extends JPanel implements Runnable {
 
     private static final int DELAY = 24;
     private Thread animus; //Animation driver
+    private boolean gameEnd = false;
 
     public GfxRenderer(Controller session) {
         this.session = session;
@@ -27,6 +28,26 @@ public class GfxRenderer extends JPanel implements Runnable {
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void endScreen(int WINNER) {
+        gameEnd = true;
+        if (WINNER == 0) {
+            try {
+                playScreen = ImageIO.read(new File(getClass().getResource("/resources/CavernWarsLoseScreen.png").toURI()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            try {
+                playScreen = ImageIO.read(new File(getClass().getResource("/resources/CavernWarsWinScreen.png").toURI()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        session.aboveGrounders.clear();
+        session.underGrounders.clear();
+        session.traps.clear();
     }
 
     @Override
@@ -66,7 +87,7 @@ public class GfxRenderer extends JPanel implements Runnable {
     public void run() {
         long beforeTime, timeDiff, sleep;
         beforeTime = System.currentTimeMillis();
-        while (true) {
+        while (!gameEnd) {
             for (Entity e : session.aboveGrounders) {
                 e.update();
             }

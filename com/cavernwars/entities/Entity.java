@@ -45,6 +45,9 @@ public abstract class Entity {
 
     public final long attackDelay = 1000; // 1 s between attacks
 
+    private long buildingAttack = System.currentTimeMillis();
+    private final long buildingAttackDelay = 2000;
+
     // Get functions for unit information
     public int getX() {return x;}
     public int getY() {return y;}
@@ -155,7 +158,19 @@ public abstract class Entity {
     public void update() {
         try {
             move();
-        } catch(Exception e) {}
+        } catch(Exception e) {
+            // Deal damage to the enemy base every 2 seconds
+            if (System.currentTimeMillis() - buildingAttack > buildingAttackDelay) {
+                System.out.println("ATTACKING BASE >:D");
+                if (ground == 0) {
+                    session.playerHealth -= getDamage();
+                } else {
+                    session.AIHealth -= getDamage();
+                }
+                buildingAttack = System.currentTimeMillis();
+                System.out.println(session.AIHealth + " " + session.playerHealth);
+            }
+        }
         attack();
         special();
     }
