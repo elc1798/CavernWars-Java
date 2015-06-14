@@ -14,6 +14,7 @@ import com.cavernwars.entities.aboveground.Priest;
 import com.cavernwars.entities.aboveground.Scout;
 import com.cavernwars.entities.underground.Berserker;
 import com.cavernwars.entities.underground.Brawler;
+import com.cavernwars.entities.underground.Charger;
 import com.cavernwars.entities.underground.towers.Trap;
 
 @SuppressWarnings("serial")
@@ -68,6 +69,7 @@ public class Controller extends JFrame {
         aboveGrounders.add(new Scout(this , 3));
         underGrounders.add(new Berserker(this , 0));
         underGrounders.add(new Brawler(this , 1));
+        underGrounders.add(new Charger(this , 2));
     }
 
     private void startGFX() {
