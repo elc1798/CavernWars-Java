@@ -48,7 +48,7 @@ public class Scout extends Entity {
 
     @Override
     public void move() {
-        if (pathCounter < path.length) {
+        if (pathCounter < path.length && !attacking) {
             if (getX() == path[pathCounter][0] && getY() == path[pathCounter][1]) {
                 pathCounter++;
             }
