@@ -105,6 +105,11 @@ public abstract class Entity {
         }
         if (health <= 0) {
             session.killQueue.add(this);
+            if (ground == 0) {
+                session.playerMoney += cost / 2;
+            } else {
+                session.AIMoney += cost / 2;
+            }
         }
     }
 
