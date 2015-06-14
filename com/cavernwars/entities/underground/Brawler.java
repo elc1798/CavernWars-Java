@@ -30,10 +30,10 @@ public class Brawler extends Entity {
         this.setSprite("/resources/TestSprite.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
-        this.setMaxHealth((int)session.UGLevels[1] + 4);
-        this.setHealth((int)session.UGLevels[1] + 4);
+        this.setMaxHealth((int)session.UGLevels[2] + 4);
+        this.setHealth((int)session.UGLevels[2] + 4);
         this.setSpeed(1);
-        this.setDamage((int)session.UGLevels[1] + 2);
+        this.setDamage((int)session.UGLevels[2] + 2);
 
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
@@ -43,7 +43,7 @@ public class Brawler extends Entity {
         attacking = false;
 
         ground = 1;
-        type = 1;
+        type = 2;
     }
 
     @Override
