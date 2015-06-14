@@ -123,7 +123,7 @@ public class Priest extends Entity {
                 setX(path[pathCounter][0]);
             }
         }
-        attackbox = new Rectangle(getX() - 50 , getY() - 50 , Entity.SPRITESIZE[0] + 100 , Entity.SPRITESIZE[1] + 100);
+        attackbox = new Rectangle(getX() - 20 , getY() - 20 , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1] + 20);
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
     }
 
