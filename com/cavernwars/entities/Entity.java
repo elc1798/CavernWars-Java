@@ -24,6 +24,7 @@ public abstract class Entity {
     public Rectangle attackbox;
     public boolean facingRight;
     public boolean onLadder;
+    public int ent_ID;
 
     // Get functions for unit information
     public int getX() {return x;}

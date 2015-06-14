@@ -21,7 +21,6 @@ public class Knight extends Entity {
 
     private Controller session;
     private int[][] path;
-    private int ent_ID;
 
     private int pathCounter = 1;
 
