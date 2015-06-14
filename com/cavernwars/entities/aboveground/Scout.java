@@ -18,7 +18,6 @@ import com.cavernwars.entities.Entity;
  */
 public class Scout extends Entity {
 
-    private Controller session;
     private int[][] path;
 
     private int pathCounter = 1;
@@ -47,6 +46,9 @@ public class Scout extends Entity {
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 150 , Entity.SPRITESIZE[1]);
         attackTime = 0;
         attacking = false;
+
+        ground = 0;
+        type = 4;
     }
 
     @Override

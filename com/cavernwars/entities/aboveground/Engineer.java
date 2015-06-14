@@ -22,7 +22,6 @@ import com.cavernwars.entities.underground.towers.Trap;
  */
 public class Engineer extends Entity {
 
-    private Controller session;
     private int[][] path;
 
     // Unique variables to this type of unit
@@ -57,6 +56,9 @@ public class Engineer extends Entity {
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
         attackTime = 0;
         attacking = false;
+
+        ground = 0;
+        type = 1;
     }
 
     @Override

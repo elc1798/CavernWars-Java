@@ -19,7 +19,6 @@ import com.cavernwars.entities.Entity;
  */
 public class Knight extends Entity {
 
-    private Controller session;
     private int[][] path;
 
     private int pathCounter = 1;
@@ -51,6 +50,9 @@ public class Knight extends Entity {
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
         attacking = false;
         attackTime = System.currentTimeMillis();
+
+        ground = 0;
+        type = 2;
     }
 
     @Override

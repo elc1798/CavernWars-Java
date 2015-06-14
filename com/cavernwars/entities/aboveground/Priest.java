@@ -14,11 +14,10 @@ import com.cavernwars.entities.Entity;
  * Damage: 0
  *
  * Special:
- * Will heal all units in a radius based on level by priest level * 2
+ * Will heal all units in a radius based on level by priest level + that unit's level
  */
 public class Priest extends Entity {
 
-    private Controller session;
     private int[][] path;
 
     private int pathCounter = 1;
@@ -50,6 +49,9 @@ public class Priest extends Entity {
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
         attacking = false;
         attackTime = System.currentTimeMillis(); // Prevents instantly healing upon spawn
+
+        ground = 0;
+        type = 3;
     }
 
     @Override
@@ -146,7 +148,7 @@ public class Priest extends Entity {
         if (System.currentTimeMillis() - attackTime > attackDelay) {
             for (Entity e : session.aboveGrounders) {
                 if (e.ent_ID != this.ent_ID) {
-                    e.setHealth(e.getHealth() + (int)session.AGLevels[3] * 2);
+                    e.setHealth(e.getHealth() + (int)session.AGLevels[3] + (int)session.AGLevels[e.type]);
                 }
             }
             attackTime = System.currentTimeMillis();

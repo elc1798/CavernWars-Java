@@ -8,7 +8,11 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
+import com.cavernwars.Controller;
+
 public abstract class Entity {
+
+    public Controller session;
 
     // Unit information:
     private int x;
@@ -27,6 +31,8 @@ public abstract class Entity {
     public int ent_ID;
     public long attackTime;
     public boolean attacking;
+    public int ground;
+    public int type;
 
     public final long attackDelay = 1000; // 1 s between attacks
 
@@ -93,6 +99,13 @@ public abstract class Entity {
         health = _health;
         if (health > maxHealth) {
             health = maxHealth;
+        }
+        if (health <= 0) {
+            if (ground == 0) {
+                session.removeAGUnit(ent_ID);
+            } else {
+                session.removeUGUnit(ent_ID);
+            }
         }
     }
 

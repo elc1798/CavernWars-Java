@@ -22,7 +22,6 @@ import com.cavernwars.entities.Entity;
  */
 public class AGKing extends Entity {
 
-    private Controller session;
     private int[][] path;
 
     private int pathCounter = 1;
@@ -51,6 +50,9 @@ public class AGKing extends Entity {
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1]);
         attackTime = 0;
         attacking = false;
+
+        ground = 0;
+        type = 0;
 
         // Apply special effect!
         for (Entity e : session.aboveGrounders) {
