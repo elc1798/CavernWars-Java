@@ -15,6 +15,7 @@ public class LavaPit extends Trap {
         cost = 3000;
         hitbox = new Rectangle(x , y , SPRITESIZE[0] , SPRITESIZE[1]);
         attackbox = new Rectangle(x - 10, y - 10, SPRITESIZE[0] + 20 , SPRITESIZE[1] + 10);
+        setSprite("/resources/traps/LavaPit.png");
     }
 
     @Override

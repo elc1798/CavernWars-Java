@@ -11,7 +11,9 @@ import com.cavernwars.buttons.UGBerserkerBUTTON;
 import com.cavernwars.buttons.UGBrawlerBUTTON;
 import com.cavernwars.buttons.UGChargerBUTTON;
 import com.cavernwars.buttons.UGKingBUTTON;
+import com.cavernwars.buttons.UGLavaPitBUTTON;
 import com.cavernwars.buttons.UGMinerBUTTON;
+import com.cavernwars.buttons.UGStalaciteDropBUTTON;
 import com.cavernwars.entities.Entity;
 import com.cavernwars.entities.aboveground.AGKing;
 import com.cavernwars.entities.aboveground.Engineer;
@@ -46,6 +48,9 @@ public class Controller extends JFrame {
     public UGBrawlerBUTTON b2;
     public UGChargerBUTTON b3;
     public UGMinerBUTTON b4;
+    public UGStalaciteDropBUTTON b5;
+    public UGLavaPitBUTTON b6;
+
     /*
      * AGLevels Contents:
      * Index | Data
@@ -66,6 +71,7 @@ public class Controller extends JFrame {
      * 4 | Miner
      */
     public float[] UGLevels = new float[5];
+    public int trapIDCounter = 0;
 
     // Booleans to keep track of King buffs
     public boolean AGKingSpawned = false;
@@ -88,6 +94,8 @@ public class Controller extends JFrame {
         b2 = new UGBrawlerBUTTON(this);
         b3 = new UGChargerBUTTON(this);
         b4 = new UGMinerBUTTON(this);
+        b5 = new UGStalaciteDropBUTTON(this);
+        b6 = new UGLavaPitBUTTON(this);
 
         // Testing:
         aboveGrounders.add(new Engineer(this , 0));
