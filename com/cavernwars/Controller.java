@@ -173,8 +173,7 @@ public class Controller extends JFrame {
     }
 
     public void mouseActionCheck() {
-        //descriptor.updateDescription(mouseSession.updateMouseLocation());
-        descriptor.updateDescription(1);
+        descriptor.updateDescription(mouseSession.updateMouseLocation());
     }
 
     public void update() {
