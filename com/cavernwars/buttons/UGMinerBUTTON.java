@@ -8,32 +8,31 @@ import java.io.File;
 import javax.imageio.ImageIO;
 
 import com.cavernwars.Controller;
-import com.cavernwars.entities.underground.UGKing;
+import com.cavernwars.entities.underground.Miner;
 
-public class UGKingBUTTON {
+public class UGMinerBUTTON {
 
     private Controller session;
     private BufferedImage icon;
 
-    public UGKingBUTTON(Controller c) {
+    public UGMinerBUTTON(Controller c) {
         c = session;
         try {
-            icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/King.png").toURI()));
+            icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/Miner.png").toURI()));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     public void spawn() {
-        UGKing newbie = new UGKing(session , (int)(session.UGLevels[0] * 10));
-        session.UGLevels[0] += 0.1;
+        Miner newbie = new Miner(session , (int)(session.UGLevels[4] * 10));
+        session.UGLevels[4] += 0.1;
         session.underGrounders.add(newbie);
         session.playerMoney -= newbie.cost;
-        session.UGKingSpawned = true;
     }
 
     public void paintComponent(Graphics g) {
-        g.drawImage(icon , 790 , 150 , 40 , 40 , null);
+        g.drawImage(icon , 600 , 150 , 40 , 40 , null);
         Toolkit.getDefaultToolkit().sync();
     }
 }
