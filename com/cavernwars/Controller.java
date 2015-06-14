@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import com.cavernwars.GUI.Descriptor;
 import com.cavernwars.GUI.GfxRenderer;
+import com.cavernwars.GUI.HealthBars;
 import com.cavernwars.GUI.MouseInterpreter;
 import com.cavernwars.buttons.UGBerserkerBUTTON;
 import com.cavernwars.buttons.UGBrawlerBUTTON;
@@ -34,9 +35,12 @@ public class Controller extends JFrame {
     private GfxRenderer graphicsSession;
     private MouseInterpreter mouseSession;
     private Descriptor descriptor;
+    private HealthBars healthBars;
 
     public int AIMoney;
     public int playerMoney;
+    public int AIHealth;
+    public int playerHealth;
 
     public ArrayList<Entity> aboveGrounders = new ArrayList<Entity>();
     public ArrayList<Entity> underGrounders = new ArrayList<Entity>();
@@ -91,6 +95,8 @@ public class Controller extends JFrame {
 
         AIMoney = 800;
         playerMoney = 800;
+        AIHealth = 200;
+        playerHealth = 200;
 
         b0 = new UGKingBUTTON(this);
         b1 = new UGBerserkerBUTTON(this);
@@ -99,6 +105,7 @@ public class Controller extends JFrame {
         b4 = new UGMinerBUTTON(this);
         b5 = new UGStalaciteDropBUTTON(this);
         b6 = new UGLavaPitBUTTON(this);
+        healthBars = new HealthBars(this);
 
         // Testing:
         aboveGrounders.add(new Engineer(this , 0));
@@ -132,6 +139,10 @@ public class Controller extends JFrame {
 
     public Descriptor getCurrentDescriptor() {
         return descriptor;
+    }
+
+    public HealthBars getHealthBars() {
+        return healthBars;
     }
 
     public void removeAGUnit(int id) {
