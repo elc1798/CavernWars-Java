@@ -152,6 +152,7 @@ public class Berserker extends Entity {
         // Can only hit one unit at a time!
         if (System.currentTimeMillis() - attackTime > attackDelay / attackRateDivisor) {
             if (!onLadder) {
+                boolean killedUnit = false;
                 for (Entity e : session.aboveGrounders) {
                     if (this.attackbox.intersects(e.hitbox)) {
                         if (session.UGKingSpawned) {
@@ -159,10 +160,16 @@ public class Berserker extends Entity {
                         } else {
                             e.setHealth(e.getHealth() - this.getDamage());
                         }
+                        if (e.getHealth() <= 0) {
+                            killedUnit = true;
+                        }
                         attacking = true;
                         attackTime = System.currentTimeMillis();
                         break;
                     }
+                    attacking = false;
+                }
+                if (killedUnit) {
                     attacking = false;
                 }
             }
