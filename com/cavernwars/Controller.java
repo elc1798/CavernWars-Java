@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import javax.swing.JFrame;
 
+import com.cavernwars.GUI.Descriptor;
 import com.cavernwars.GUI.GfxRenderer;
 import com.cavernwars.GUI.MouseInterpreter;
 import com.cavernwars.buttons.UGBerserkerBUTTON;
@@ -32,6 +33,7 @@ public class Controller extends JFrame {
     // Game Data
     private GfxRenderer graphicsSession;
     private MouseInterpreter mouseSession;
+    private Descriptor descriptor;
 
     public int AIMoney;
     public int playerMoney;
@@ -80,6 +82,7 @@ public class Controller extends JFrame {
     public Controller() {
         startGFX();
         startMouseInterpreter();
+        descriptor = new Descriptor(this);
 
         for (int i = 0; i < 5; i++) {
             AGLevels[i] = 1;
@@ -127,6 +130,10 @@ public class Controller extends JFrame {
         addMouseListener(mouseSession);
     }
 
+    public Descriptor getCurrentDescriptor() {
+        return descriptor;
+    }
+
     public void removeAGUnit(int id) {
         for (int i = 0; i < aboveGrounders.size(); i++) {
             if (aboveGrounders.get(i).ent_ID == id) {
@@ -152,6 +159,11 @@ public class Controller extends JFrame {
                 break;
             }
         }
+    }
+
+    public void mouseActionCheck() {
+        //descriptor.updateDescription(mouseSession.updateMouseLocation());
+        descriptor.updateDescription(1);
     }
 
     public void update() {
@@ -188,5 +200,8 @@ public class Controller extends JFrame {
                 e.attacking = false;
             }
         }
+
+        // Check mouse location and apply appropriate action
+        mouseActionCheck();
     }
 }

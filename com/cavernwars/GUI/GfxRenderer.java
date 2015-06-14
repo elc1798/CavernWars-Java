@@ -47,6 +47,8 @@ public class GfxRenderer extends JPanel implements Runnable {
         session.b4.paintComponent(g);
         session.b5.paintComponent(g);
         session.b6.paintComponent(g);
+        // Description rendering:
+        session.getCurrentDescriptor().paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
     }
 
