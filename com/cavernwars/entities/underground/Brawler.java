@@ -108,6 +108,7 @@ public class Brawler extends Entity {
                     dy = 0;
                 } else {
                     dy = getSpeed() % (path[pathCounter][1] - getY());
+                    dy = -dy;
                     if (dy == 0) {
                         dy = -1;
                     }
@@ -144,10 +145,8 @@ public class Brawler extends Entity {
                             e.setHealth(e.getHealth() - this.getDamage());
                         }
                         if (e.getHealth() <= 0) {
-                            System.out.printf("%d %d\n" , getHealth() , getDamage());
                             this.setHealth(getHealth() + 2);
                             this.setDamage(getDamage() + 1);
-                            System.out.printf("%d %d\n" , getHealth() , getDamage());
                         }
                         attacking = true;
                         attackTime = System.currentTimeMillis();
