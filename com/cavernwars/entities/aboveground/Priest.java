@@ -69,7 +69,7 @@ public class Priest extends Entity {
                 dx = 0;
                 dy = getSpeed() % (path[pathCounter][1] - getY());
                 if (dy == 0) {
-                    dy = getSpeed();
+                    dy = 1;
                 }
             } else if (path[pathCounter - 1][1] - path[pathCounter][1] == 0) {
                 onLadder = false;
@@ -116,6 +116,15 @@ public class Priest extends Entity {
             setX(getX() + dx);
             setY(getY() + dy);
             facingRight = path[pathCounter][0] - path[pathCounter - 1][0] > 0;
+        }
+        if (facingRight) {
+            if (getX() > path[pathCounter][0]) {
+                setX(path[pathCounter][0]);
+            }
+        } else {
+            if (getX() < path[pathCounter][0]) {
+                setX(path[pathCounter][0]);
+            }
         }
         attackbox = new Rectangle(getX() - 50 , getY() - 50 , Entity.SPRITESIZE[0] + 100 , Entity.SPRITESIZE[1] + 100);
     }

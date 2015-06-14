@@ -75,7 +75,7 @@ public class AGKing extends Entity {
                 dx = 0;
                 dy = getSpeed() % (path[pathCounter][1] - getY());
                 if (dy == 0) {
-                    dy = getSpeed();
+                    dy = 1;
                 }
             } else if (path[pathCounter - 1][1] - path[pathCounter][1] == 0) {
                 onLadder = false;
@@ -124,8 +124,14 @@ public class AGKing extends Entity {
             facingRight = path[pathCounter][0] - path[pathCounter - 1][0] > 0;
         }
         if (facingRight) {
+            if (getX() > path[pathCounter][0]) {
+                setX(path[pathCounter][0]);
+            }
             attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1]);
         } else {
+            if (getX() < path[pathCounter][0]) {
+                setX(path[pathCounter][0]);
+            }
             attackbox = new Rectangle(getX() - 40, getY() , Entity.SPRITESIZE[0] + 80 , Entity.SPRITESIZE[1]);
         }
     }

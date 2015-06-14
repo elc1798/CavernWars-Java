@@ -66,7 +66,7 @@ public class Scout extends Entity {
                 dx = 0;
                 dy = getSpeed() % (path[pathCounter][1] - getY());
                 if (dy == 0) {
-                    dy = getSpeed();
+                    dy = 1;
                 }
             } else if (path[pathCounter - 1][1] - path[pathCounter][1] == 0) {
                 onLadder = false;
@@ -115,8 +115,14 @@ public class Scout extends Entity {
             facingRight = path[pathCounter][0] - path[pathCounter - 1][0] > 0;
         }
         if (facingRight) {
+            if (getX() > path[pathCounter][0]) {
+                setX(path[pathCounter][0]);
+            }
             attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 150 , Entity.SPRITESIZE[1]);
         } else {
+            if (getX() < path[pathCounter][0]) {
+                setX(path[pathCounter][0]);
+            }
             attackbox = new Rectangle(getX() - 150, getY() , Entity.SPRITESIZE[0] + 300 , Entity.SPRITESIZE[1]);
         }
     }
