@@ -6,7 +6,7 @@ import com.cavernwars.Controller;
 import com.cavernwars.entities.Entity;
 
 /*
- * Charger are "UnderGround" or "UG" units.
+ * Chargers are "UnderGround" or "UG" units.
  * Cost: 75 + 25 * Level
  * Stats:
  * Health: 3 + Level
