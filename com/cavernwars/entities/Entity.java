@@ -15,10 +15,6 @@ public abstract class Entity {
     private int y;
     private int maxHealth;
     private int health;
-    /* Note the speed is a ratio. It should take an entity of speed 1 to arrive at the next
-     * destination on its path in "n" amount of seconds. Speed 2 should arrive in n/2 seconds,
-     * speed 3 should arrive in n/3, etc.
-     */
     private int speed;
     private int damage;
     private BufferedImage sprite;
@@ -41,38 +37,38 @@ public abstract class Entity {
     // Constants for Entities
     public static final int[] SPRITESIZE = {20 , 20};
     public static final int[][] AGPATH = {
-        {100 , 80 , 10},
+        {100 , 80 , 0},
         {500 , 80 , 0},
-        {510 , 120 , 4},
-        {450 , 160 , 8},
-        {5 , 160 , 6},
-        {5 , 235 , 10},
-        {500 , 235 , 6},
-        {500 , 310 , 10},
-        {5 , 310 , 6},
-        {5 , 400 , 10},
-        {500 , 400 , 6},
-        {500 , 425 , 10},
-        {5 , 425 , 8},
-        {5 , 550 , 10},
-        {430 , 550 , -1}
+        {510 , 120 , 1},
+        {450 , 160 , 0},
+        {5 , 160 , 0},
+        {5 , 235 , 0},
+        {500 , 235 , 0},
+        {500 , 310 , 0},
+        {5 , 310 , 0},
+        {5 , 400 , 0},
+        {500 , 400 , 0},
+        {500 , 475 , 0},
+        {5 , 475 , 0},
+        {5 , 550 , 0},
+        {430 , 550 , 0}
     };
     public static final int[][] UGPATH = {
-        {430 , 550 , 10},
-        {5 , 550 , 8},
-        {5 , 425 , 10},
-        {500 , 425 , 6},
-        {500 , 400 , 10},
-        {5 , 400 , 6},
-        {5 , 310 , 10},
-        {500 , 310 , 6},
-        {500 , 235 , 10},
-        {5 , 235 , 6},
-        {5 , 160 , 8},
-        {450 , 160 , 4},
-        {510 , 120 , 0},
-        {500 , 80 , 10},
-        {120 , 80 , -1}
+        {430 , 550 , 0},
+        {5 , 550 , 0},
+        {5 , 475 , 0},
+        {500 , 475 , 0},
+        {500 , 400 , 0},
+        {5 , 400 , 0},
+        {5 , 310 , 0},
+        {500 , 310 , 0},
+        {500 , 235 , 0},
+        {5 , 235 , 0},
+        {5 , 160 , 0},
+        {450 , 160 , 0},
+        {510 , 120 , 1},
+        {500 , 80 , 0},
+        {120 , 80 , 0}
     };
 
     // Set functions for unit information

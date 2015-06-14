@@ -22,7 +22,7 @@ public class Knight extends Entity {
     private Controller session;
     private int[][] path;
 
-    private int pathCounter = 0;
+    private int pathCounter = 1;
 
     public Knight(Controller c) {
         session = c;
@@ -48,33 +48,68 @@ public class Knight extends Entity {
 
     @Override
     public void move() {
-        if (pathCounter + 1 < path.length && Math.abs((double) getX() - path[pathCounter +1][0]) < 5.0 && Math.abs((double) getX() - path[pathCounter +1][0]) < 5.0) {
-            setX(path[pathCounter + 1][0]);
-            setY(path[pathCounter + 1][1]);
-        }
-        // Out of bounds?? This is a hacky fix :D
-        if (getX() < 0) {
-            setX(5);
-        }
-        if (getX() > 515) {
-            setX(500);
-        }
-        if (pathCounter + 1 < path.length && getX() == path[pathCounter + 1][0] && getY() == path[pathCounter + 1][1]) {
-            pathCounter++;
-        }
-        if (path[pathCounter][2] != -1) {
-            if (path[pathCounter][2] == 0) {
-                setX(path[pathCounter + 1][0]);
-                setY(path[pathCounter + 1][1]);
-            } else {
-                int dx , dy;
-                dx = (path[pathCounter + 1][0] - path[pathCounter][0]) / path[pathCounter][2] * getSpeed() / 10;
-                dy = (path[pathCounter + 1][1] - path[pathCounter][1]) / path[pathCounter][2] * getSpeed() / 10;
-                facingRight = dx > 0;
-                onLadder = dx == 0;
-                setX(getX() + dx);
-                setY(getY() + dy);
+        if (pathCounter + 1 < path.length) {
+            if (getX() == path[pathCounter][0] && getY() == path[pathCounter][1]) {
+                pathCounter++;
             }
+            if (path[pathCounter][2] == 1) {
+                setX(path[pathCounter][0]);
+                setY(path[pathCounter][1]);
+                pathCounter++;
+            }
+            int dx , dy;
+            if (path[pathCounter - 1][0] - path[pathCounter][0] == 0) {
+                onLadder = true;
+                dx = 0;
+                dy = getSpeed() % (path[pathCounter][1] - getY());
+                if (dy == 0) {
+                    dy = getSpeed();
+                }
+            } else if (path[pathCounter - 1][1] - path[pathCounter][1] == 0) {
+                onLadder = false;
+                dy = 0;
+                if (path[pathCounter][0] > path[pathCounter - 1][0]) {
+                    dx = getSpeed() % ((int)Math.abs((float)(path[pathCounter][0] - getX())));
+                    if (dx == 0) {
+                        dx = 1;
+                    }
+                } else {
+                    dx = getSpeed() % ((int)Math.abs((float)(path[pathCounter][0] - getX())));
+                    dx = -dx;
+                    if (dx == 0) {
+                        dx = -1;
+                    }
+                }
+            } else {
+                onLadder = false;
+                if (path[pathCounter][0] - getX() == 0) {
+                    dx = 0;
+                } else {
+                    if (path[pathCounter][0] > path[pathCounter - 1][0]) {
+                        dx = getSpeed() % ((int)Math.abs((float)(path[pathCounter][0] - getX())));
+                        if (dx == 0) {
+                            dx = 1;
+                        }
+                    } else {
+                        dx = getSpeed() % ((int)Math.abs((float)(path[pathCounter][0] - getX())));
+                        dx = -dx;
+                        if (dx == 0) {
+                            dx = -1;
+                        }
+                    }
+                }
+                if (path[pathCounter][1] - getY() == 0) {
+                    dy = 0;
+                } else {
+                    dy = getSpeed() % (path[pathCounter][1] - getY());
+                    if (dy == 0) {
+                        dy = 1;
+                    }
+                }
+            }
+            setX(getX() + dx);
+            setY(getY() + dy);
+            facingRight = path[pathCounter][0] - path[pathCounter - 1][0] > 0;
         }
         if (facingRight) {
             attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
