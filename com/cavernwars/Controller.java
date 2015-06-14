@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import com.cavernwars.GUI.GfxRenderer;
 import com.cavernwars.GUI.MouseInterpreter;
 import com.cavernwars.entities.Entity;
+import com.cavernwars.entities.aboveground.AGKing;
 import com.cavernwars.entities.aboveground.Engineer;
 import com.cavernwars.entities.aboveground.Knight;
 import com.cavernwars.entities.aboveground.Priest;
@@ -15,6 +16,7 @@ import com.cavernwars.entities.aboveground.Scout;
 import com.cavernwars.entities.underground.Berserker;
 import com.cavernwars.entities.underground.Brawler;
 import com.cavernwars.entities.underground.Charger;
+import com.cavernwars.entities.underground.UGKing;
 import com.cavernwars.entities.underground.towers.Trap;
 
 @SuppressWarnings("serial")
@@ -70,6 +72,11 @@ public class Controller extends JFrame {
         underGrounders.add(new Berserker(this , 0));
         underGrounders.add(new Brawler(this , 1));
         underGrounders.add(new Charger(this , 2));
+
+        aboveGrounders.add(new AGKing(this , 99));
+        underGrounders.add(new UGKing(this , 99));
+        AGKingSpawned = true;
+        UGKingSpawned = true;
     }
 
     private void startGFX() {

@@ -17,7 +17,7 @@ import com.cavernwars.entities.Entity;
  * Can only be unlocked after all units are over level 5
  * All allied units that are currently alive will be healed.
  * While this unit is alive, all other allied units will have
- * doubled health and damage.
+ * doubled damage.
  * There can only be one UGKing alive at a time.
  */
 public class UGKing extends Entity {

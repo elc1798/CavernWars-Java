@@ -1,5 +1,5 @@
 package com.cavernwars.buttons;
 
-public class UGKing {
+public class Button {
 
 }
