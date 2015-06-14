@@ -107,8 +107,14 @@ public abstract class Entity {
             session.killQueue.add(this);
             if (ground == 0) {
                 session.playerMoney += cost / 2;
+                if (type == 0) {
+                    session.AGKingSpawned = false;
+                }
             } else {
                 session.AIMoney += cost / 2;
+                if (type == 0) {
+                    session.UGKingSpawned = false;
+                }
             }
         }
     }
