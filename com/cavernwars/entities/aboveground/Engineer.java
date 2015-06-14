@@ -119,4 +119,26 @@ public class Engineer extends Entity {
             attackbox = new Rectangle(getX() - 30, getY() , Entity.SPRITESIZE[0] + 60 , Entity.SPRITESIZE[1]);
         }
     }
+
+    @Override
+    public void attack() {
+        // Can only hit one unit at a time!
+        if (!onLadder) {
+            for (Entity e : session.underGrounders) {
+                if (this.attackbox.intersects(e.hitbox)) {
+                    if (session.AGKingSpawned) {
+                        e.setHealth(e.getHealth() - this.getDamage() * 2);
+                    } else {
+                        e.setHealth(e.getHealth() - this.getDamage());
+                    }
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void special() {
+        
+    }
 }

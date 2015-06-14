@@ -39,6 +39,10 @@ public class Controller extends JFrame {
      */
     public float[] UGLevels = new float[5];
 
+    // Booleans to keep track of King buffs
+    public boolean AGKingSpawned = false;
+    public boolean UGKingSpawned = false;
+
     public Controller() {
         startGFX();
         startMouseInterpreter();

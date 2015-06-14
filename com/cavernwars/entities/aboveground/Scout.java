@@ -116,4 +116,21 @@ public class Scout extends Entity {
             attackbox = new Rectangle(getX() - 150, getY() , Entity.SPRITESIZE[0] + 300 , Entity.SPRITESIZE[1]);
         }
     }
+
+    @Override
+    public void attack() {
+        // Can only hit one unit at a time!
+        if (!onLadder) {
+            for (Entity e : session.underGrounders) {
+                if (this.attackbox.intersects(e.hitbox)) {
+                    if (session.AGKingSpawned) {
+                        e.setHealth(e.getHealth() - this.getDamage() * 2);
+                    } else {
+                        e.setHealth(e.getHealth() - this.getDamage());
+                    }
+                    break;
+                }
+            }
+        }
+    }
 }
