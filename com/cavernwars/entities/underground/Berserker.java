@@ -124,6 +124,7 @@ public class Berserker extends Entity {
                     dy = 0;
                 } else {
                     dy = getSpeed() % (path[pathCounter][1] - getY());
+                    dy = -dy;
                     if (dy == 0) {
                         dy = -1;
                     }
