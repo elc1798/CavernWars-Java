@@ -134,8 +134,9 @@ public class AGKing extends Entity {
             if (getX() < path[pathCounter][0]) {
                 setX(path[pathCounter][0]);
             }
-            attackbox = new Rectangle(getX() - 40, getY() , Entity.SPRITESIZE[0] + 80 , Entity.SPRITESIZE[1]);
+            attackbox = new Rectangle(getX() - 40, getY() , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1]);
         }
+        hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
     }
 
     @Override

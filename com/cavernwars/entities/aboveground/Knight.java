@@ -129,8 +129,9 @@ public class Knight extends Entity {
             if (getX() < path[pathCounter][0]) {
                 setX(path[pathCounter][0]);
             }
-            attackbox = new Rectangle(getX() - 30, getY() , Entity.SPRITESIZE[0] + 60 , Entity.SPRITESIZE[1]);
+            attackbox = new Rectangle(getX() - 30, getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
         }
+        hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
     }
 
     @Override

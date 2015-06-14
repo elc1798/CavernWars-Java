@@ -125,8 +125,9 @@ public class Scout extends Entity {
             if (getX() < path[pathCounter][0]) {
                 setX(path[pathCounter][0]);
             }
-            attackbox = new Rectangle(getX() - 150, getY() , Entity.SPRITESIZE[0] + 300 , Entity.SPRITESIZE[1]);
+            attackbox = new Rectangle(getX() - 150, getY() , Entity.SPRITESIZE[0] + 150 , Entity.SPRITESIZE[1]);
         }
+        hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
     }
 
     @Override

@@ -147,8 +147,9 @@ public class Berserker extends Entity {
             if (getX() < path[pathCounter][0]) {
                 setX(path[pathCounter][0]);
             }
-            attackbox = new Rectangle(getX() - 30, getY() , Entity.SPRITESIZE[0] + 60 , Entity.SPRITESIZE[1]);
+            attackbox = new Rectangle(getX() - 30, getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
         }
+        hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
     }
 
     @Override
@@ -156,7 +157,7 @@ public class Berserker extends Entity {
         // Can only hit one unit at a time!
         if (System.currentTimeMillis() - attackTime > attackDelay / attackRateDivisor) {
             if (!onLadder) {
-                for (Entity e : session.underGrounders) {
+                for (Entity e : session.aboveGrounders) {
                     if (this.attackbox.intersects(e.hitbox)) {
                         if (session.AGKingSpawned) {
                             e.setHealth(e.getHealth() - this.getDamage() * 2);

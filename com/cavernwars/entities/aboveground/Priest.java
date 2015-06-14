@@ -129,6 +129,7 @@ public class Priest extends Entity {
             }
         }
         attackbox = new Rectangle(getX() - 50 , getY() - 50 , Entity.SPRITESIZE[0] + 100 , Entity.SPRITESIZE[1] + 100);
+        hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
     }
 
     @Override
