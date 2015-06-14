@@ -14,13 +14,18 @@ import com.cavernwars.entities.Entity;
  * Damage: 1 + Level * 2
  *
  * Special:
- * When this unit arrives on a new platform, it charges forward at max speed until it hits a unit
+ * When this unit arrives on a new platform, it charges forward at max speed until it hits a unit.
+ * When it collides, it deals additional damage based on how long it was charging.
  */
 public class Charger extends Entity {
 
     private int[][] path;
 
     private int pathCounter = 1;
+
+    // Unique variables for this unit
+    private boolean charging = false;
+    private long chargeTime;
 
     public Charger(Controller c , int id) {
         session = c;
@@ -43,6 +48,8 @@ public class Charger extends Entity {
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
         attackTime = 0;
         attacking = false;
+        charging = false;
+        chargeTime = System.currentTimeMillis();
 
         ground = 1;
         type = 3;
@@ -51,6 +58,7 @@ public class Charger extends Entity {
     @Override
     public void move() {
         if (pathCounter < path.length && !attacking) {
+            charging = false;
             if (getX() == path[pathCounter][0] && getY() == path[pathCounter][1]) {
                 pathCounter++;
             }
@@ -72,6 +80,7 @@ public class Charger extends Entity {
                 onLadder = false;
                 dy = 0;
                 setSpeed(5);
+                charging = true;
                 if (path[pathCounter][0] > path[pathCounter - 1][0]) {
                     dx = getSpeed() % ((int)Math.abs((float)(path[pathCounter][0] - getX())));
                     if (dx == 0) {
@@ -88,6 +97,7 @@ public class Charger extends Entity {
                 onLadder = false;
                 if (path[pathCounter][1] - getY() == 0) {
                     dy = 0;
+                    charging = true;
                     setSpeed(5);
                 } else {
                     dy = getSpeed() % (path[pathCounter][1] - getY());
@@ -112,6 +122,9 @@ public class Charger extends Entity {
                         }
                     }
                 }
+            }
+            if (!charging) { // Only reset if this unit is MOVING
+                chargeTime = System.currentTimeMillis();
             }
             setSpeed(2);
             setX(getX() + dx);
@@ -139,10 +152,13 @@ public class Charger extends Entity {
             if (!onLadder) {
                 for (Entity e : session.aboveGrounders) {
                     if (this.attackbox.intersects(e.hitbox)) {
+                        charging = false;
+                        int bonusDmg = (int)(System.currentTimeMillis() - chargeTime) / 1000 * (int)session.UGLevels[3];
+                        chargeTime = System.currentTimeMillis();
                         if (session.UGKingSpawned) {
-                            e.setHealth(e.getHealth() - this.getDamage() * 2);
+                            e.setHealth(e.getHealth() - this.getDamage() * 2 - bonusDmg);
                         } else {
-                            e.setHealth(e.getHealth() - this.getDamage());
+                            e.setHealth(e.getHealth() - this.getDamage() - bonusDmg);
                         }
                         attacking = true;
                         attackTime = System.currentTimeMillis();
