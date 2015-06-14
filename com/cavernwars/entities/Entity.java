@@ -25,6 +25,10 @@ public abstract class Entity {
     public boolean facingRight;
     public boolean onLadder;
     public int ent_ID;
+    public long attackTime;
+    public boolean attacking;
+
+    public final long attackDelay = 1000; // 1 s between attacks
 
     // Get functions for unit information
     public int getX() {return x;}

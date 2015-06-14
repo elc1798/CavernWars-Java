@@ -45,11 +45,13 @@ public class Priest extends Entity {
         facingRight = true;
         onLadder = false;
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
+        attacking = false;
+        attackTime = System.currentTimeMillis(); // Prevents instantly healing upon spawn
     }
 
     @Override
     public void move() {
-        if (pathCounter + 1 < path.length) {
+        if (pathCounter < path.length && !attacked) {
             if (getX() == path[pathCounter][0] && getY() == path[pathCounter][1]) {
                 pathCounter++;
             }

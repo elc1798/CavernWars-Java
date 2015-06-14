@@ -45,11 +45,13 @@ public class Scout extends Entity {
         facingRight = true;
         onLadder = false;
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 150 , Entity.SPRITESIZE[1]);
+        attackTime = 0;
+        attacking = false;
     }
 
     @Override
     public void move() {
-        if (pathCounter + 1 < path.length) {
+        if (pathCounter < path.length) {
             if (getX() == path[pathCounter][0] && getY() == path[pathCounter][1]) {
                 pathCounter++;
             }
@@ -122,16 +124,22 @@ public class Scout extends Entity {
     @Override
     public void attack() {
         // Can only hit one unit at a time!
-        if (!onLadder) {
-            for (Entity e : session.underGrounders) {
-                if (this.attackbox.intersects(e.hitbox)) {
-                    if (session.AGKingSpawned) {
-                        e.setHealth(e.getHealth() - this.getDamage() * 2);
-                    } else {
-                        e.setHealth(e.getHealth() - this.getDamage());
+        if (System.currentTimeMillis() - attackTime > attackDelay) {
+            if (!onLadder) {
+                for (Entity e : session.underGrounders) {
+                    if (this.attackbox.intersects(e.hitbox)) {
+                        if (session.AGKingSpawned) {
+                            e.setHealth(e.getHealth() - this.getDamage() * 2);
+                        } else {
+                            e.setHealth(e.getHealth() - this.getDamage());
+                        }
+                        attacking = true;
+                        attackTime = System.currentTimeMillis();
+                        break;
                     }
-                    break;
                 }
+                attacking = false;
+
             }
         }
     }

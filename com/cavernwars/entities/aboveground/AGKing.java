@@ -49,6 +49,8 @@ public class AGKing extends Entity {
         facingRight = true;
         onLadder = false;
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1]);
+        attackTime = 0;
+        attacking = false;
 
         // Apply special effect!
         for (Entity e : session.aboveGrounders) {
@@ -58,7 +60,7 @@ public class AGKing extends Entity {
 
     @Override
     public void move() {
-        if (pathCounter + 1 < path.length) {
+        if (pathCounter < path.length && !attacking) {
             if (getX() == path[pathCounter][0] && getY() == path[pathCounter][1]) {
                 pathCounter++;
             }
@@ -131,13 +133,18 @@ public class AGKing extends Entity {
     @Override
     public void attack() {
         // Can only hit one unit at a time!
-        if (!onLadder) {
-            for (Entity e : session.underGrounders) {
-                if (this.attackbox.intersects(e.hitbox)) {
-                    e.setHealth(e.getHealth() - this.getDamage());
-                    break;
+        if (System.currentTimeMillis() - attackTime > attackDelay) {
+            if (!onLadder) {
+                for (Entity e : session.underGrounders) {
+                    if (this.attackbox.intersects(e.hitbox)) {
+                        e.setHealth(e.getHealth() - this.getDamage());
+                        attacking = true;
+                        attackTime = System.currentTimeMillis();
+                        break;
+                    }
                 }
             }
+            attacking = false;
         }
     }
 }
