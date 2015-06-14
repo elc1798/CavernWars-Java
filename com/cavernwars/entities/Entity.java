@@ -97,6 +97,9 @@ public abstract class Entity {
 
     public void setSpeed(int _speed) {
         speed = _speed;
+        if (speed > 8) {
+            speed = 8;
+        }
     }
 
     public void setDamage(int _damage) {
