@@ -13,6 +13,7 @@ import com.cavernwars.entities.aboveground.Knight;
 import com.cavernwars.entities.aboveground.Priest;
 import com.cavernwars.entities.aboveground.Scout;
 import com.cavernwars.entities.underground.Berserker;
+import com.cavernwars.entities.underground.Brawler;
 import com.cavernwars.entities.underground.towers.Trap;
 
 @SuppressWarnings("serial")
@@ -54,17 +55,19 @@ public class Controller extends JFrame {
     public Controller() {
         startGFX();
         startMouseInterpreter();
-        aboveGrounders.add(new Engineer(this , 0));
-        aboveGrounders.add(new Knight(this , 1));
-        aboveGrounders.add(new Priest(this , 2));
-        aboveGrounders.add(new Scout(this , 3));
-        underGrounders.add(new Berserker(this , 0));
 
         for (int i = 0; i < 5; i++) {
             AGLevels[i] = 1;
             UGLevels[i] = 1;
         }
 
+        // Testing:
+        aboveGrounders.add(new Engineer(this , 0));
+        aboveGrounders.add(new Knight(this , 1));
+        aboveGrounders.add(new Priest(this , 2));
+        aboveGrounders.add(new Scout(this , 3));
+        underGrounders.add(new Berserker(this , 0));
+        underGrounders.add(new Brawler(this , 1));
     }
 
     private void startGFX() {

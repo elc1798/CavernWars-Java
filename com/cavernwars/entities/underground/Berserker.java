@@ -69,7 +69,7 @@ public class Berserker extends Entity {
 
     @Override
     public void move() {
-        if (pathCounter < path.length) {
+        if (pathCounter < path.length && !attacking) {
             if (getX() == path[pathCounter][0] && getY() == path[pathCounter][1]) {
                 pathCounter++;
             }
@@ -154,7 +154,7 @@ public class Berserker extends Entity {
             if (!onLadder) {
                 for (Entity e : session.aboveGrounders) {
                     if (this.attackbox.intersects(e.hitbox)) {
-                        if (session.AGKingSpawned) {
+                        if (session.UGKingSpawned) {
                             e.setHealth(e.getHealth() - this.getDamage() * 2);
                         } else {
                             e.setHealth(e.getHealth() - this.getDamage());
