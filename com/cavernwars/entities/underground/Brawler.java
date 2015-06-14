@@ -153,8 +153,8 @@ public class Brawler extends Entity {
                         attackTime = System.currentTimeMillis();
                         break;
                     }
+                    attacking = false;
                 }
-                attacking = false;
             }
         }
     }

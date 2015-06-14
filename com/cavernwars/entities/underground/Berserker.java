@@ -163,9 +163,8 @@ public class Berserker extends Entity {
                         attackTime = System.currentTimeMillis();
                         break;
                     }
+                    attacking = false;
                 }
-                attacking = false;
-
             }
         }
     }

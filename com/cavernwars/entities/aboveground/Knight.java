@@ -134,6 +134,7 @@ public class Knight extends Entity {
         // Can only hit one unit at a time!
         if (System.currentTimeMillis() - attackTime > attackDelay) {
             if (!onLadder) {
+                int tmp = previousAttacks;
                 for (Entity e : session.underGrounders) {
                     if (this.attackbox.intersects(e.hitbox)) {
                         if (session.AGKingSpawned) {
@@ -146,11 +147,12 @@ public class Knight extends Entity {
                         }
                         attacking = true;
                         attackTime = System.currentTimeMillis();
+                        previousAttacks = tmp;
                         break;
                     }
+                    attacking = false;
+                    previousAttacks = 0;
                 }
-                attacking = false;
-                previousAttacks = 0;
             }
         }
     }

@@ -141,9 +141,8 @@ public class Scout extends Entity {
                         attackTime = System.currentTimeMillis();
                         break;
                     }
+                    attacking = false;
                 }
-                attacking = false;
-
             }
         }
     }

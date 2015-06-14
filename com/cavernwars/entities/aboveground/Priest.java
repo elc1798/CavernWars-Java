@@ -135,8 +135,8 @@ public class Priest extends Entity {
                 attacked = true;
                 break;
             }
+            attacked = false;
         }
-        attacked = false;
     }
 
     @Override

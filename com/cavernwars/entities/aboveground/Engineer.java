@@ -151,9 +151,9 @@ public class Engineer extends Entity {
                         attackTime = System.currentTimeMillis();
                         break;
                     }
+                    attacking = false;
                 }
             }
-            attacking = false;
         }
     }
 
