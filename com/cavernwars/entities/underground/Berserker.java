@@ -169,7 +169,7 @@ public class Berserker extends Entity {
                     }
                     attacking = false;
                 }
-                if (killedUnit) {
+                if (killedUnit && berserk) {
                     attacking = false;
                 }
             }
