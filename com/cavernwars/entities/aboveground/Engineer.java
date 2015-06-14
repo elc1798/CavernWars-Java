@@ -4,6 +4,7 @@ import java.awt.Rectangle;
 
 import com.cavernwars.Controller;
 import com.cavernwars.entities.Entity;
+import com.cavernwars.entities.underground.towers.Trap;
 
 /*
  * Engineers are "AboveGround" or "AG" units.
@@ -23,6 +24,12 @@ public class Engineer extends Entity {
 
     private Controller session;
     private int[][] path;
+
+    // Unique variables to this type of unit
+    private boolean defusing = false;
+    private final long defuseTime = 3000; // 3 seconds
+    private long defusingStart;
+    private int defusedTrapID;
 
     private int pathCounter = 1;
 
@@ -52,7 +59,7 @@ public class Engineer extends Entity {
 
     @Override
     public void move() {
-        if (pathCounter + 1 < path.length) {
+        if (pathCounter + 1 < path.length && !defusing) {
             if (getX() == path[pathCounter][0] && getY() == path[pathCounter][1]) {
                 pathCounter++;
             }
@@ -125,7 +132,7 @@ public class Engineer extends Entity {
     @Override
     public void attack() {
         // Can only hit one unit at a time!
-        if (!onLadder) {
+        if (!onLadder && !defusing) {
             for (Entity e : session.underGrounders) {
                 if (this.attackbox.intersects(e.hitbox)) {
                     if (session.AGKingSpawned) {
@@ -141,6 +148,22 @@ public class Engineer extends Entity {
 
     @Override
     public void special() {
-        
+        if (!defusing) {
+            for (Trap t : session.traps) {
+                if (this.attackbox.intersects(t.hitbox)) {
+                    t.disabled = true;
+                    this.setSprite("/resources/entities/ENGINEER-DEFUSING.png");
+                    defusedTrapID = t.trap_ID;
+                    defusingStart = System.currentTimeMillis();
+                    break;
+                }
+            }
+        } else {
+            if (System.currentTimeMillis() - defusingStart > defuseTime) {
+                defusing = false;
+                session.removeTrap(defusedTrapID);
+                this.setSprite("/resources/entities/ENGINEER.png");
+            }
+        }
     }
 }

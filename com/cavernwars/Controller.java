@@ -8,6 +8,7 @@ import com.cavernwars.GUI.GfxRenderer;
 import com.cavernwars.GUI.MouseInterpreter;
 import com.cavernwars.entities.Entity;
 import com.cavernwars.entities.aboveground.Engineer;
+import com.cavernwars.entities.underground.towers.Trap;
 
 @SuppressWarnings("serial")
 public class Controller extends JFrame {
@@ -17,6 +18,7 @@ public class Controller extends JFrame {
 
     public ArrayList<Entity> aboveGrounders = new ArrayList<Entity>();
     public ArrayList<Entity> underGrounders = new ArrayList<Entity>();
+    public ArrayList<Trap> traps = new ArrayList<Trap>();
 
     /*
      * AGLevels Contents:
@@ -68,5 +70,32 @@ public class Controller extends JFrame {
     private void startMouseInterpreter() {
         mouseSession = new MouseInterpreter(this);
         addMouseListener(mouseSession);
+    }
+
+    public void removeAGUnit(int id) {
+        for (int i = 0; i < aboveGrounders.size(); i++) {
+            if (aboveGrounders.get(i).ent_ID == id) {
+                aboveGrounders.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void removeUGUnit(int id) {
+        for (int i = 0; i < underGrounders.size(); i++) {
+            if (underGrounders.get(i).ent_ID == id) {
+                underGrounders.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void removeTrap(int id) {
+        for (int i = 0; i < traps.size(); i++) {
+            if (traps.get(i).trap_ID == id) {
+                traps.remove(i);
+                break;
+            }
+        }
     }
 }
