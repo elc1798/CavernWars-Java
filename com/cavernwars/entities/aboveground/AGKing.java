@@ -30,11 +30,6 @@ public class AGKing extends Entity {
         session = c;
         ent_ID = id;
 
-        /*
-         * Each element in 'path' is formated like such:
-         * {xcoor to start at , ycoor to start at , seconds to reach next destination}
-         * -1 is used to denote an infinite amount of time.
-         */
         path = Entity.AGPATH;
         setSprite("/resources/TestSprite.png");
         setX(path[0][0]);
