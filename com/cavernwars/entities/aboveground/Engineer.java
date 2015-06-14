@@ -26,8 +26,10 @@ public class Engineer extends Entity {
 
     private int pathCounter = 1;
 
-    public Engineer(Controller c) {
+    public Engineer(Controller c , int id) {
         session = c;
+        ent_ID = id;
+
         /*
          * Each element in 'path' is formated like such:
          * {xcoor to start at , ycoor to start at , seconds to reach next destination}

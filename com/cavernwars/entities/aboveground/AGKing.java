@@ -24,11 +24,14 @@ public class AGKing extends Entity {
 
     private Controller session;
     private int[][] path;
+    private int ent_ID;
 
     private int pathCounter = 1;
 
-    public AGKing(Controller c) {
+    public AGKing(Controller c , int id) {
         session = c;
+        ent_ID = id;
+
         /*
          * Each element in 'path' is formated like such:
          * {xcoor to start at , ycoor to start at , seconds to reach next destination}

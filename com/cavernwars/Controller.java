@@ -46,7 +46,7 @@ public class Controller extends JFrame {
     public Controller() {
         startGFX();
         startMouseInterpreter();
-        aboveGrounders.add(new Engineer(this));
+        aboveGrounders.add(new Engineer(this , 0));
 
         for (int i = 0; i < 5; i++) {
             AGLevels[i] = 1;
