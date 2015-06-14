@@ -14,7 +14,7 @@ import com.cavernwars.entities.Entity;
  * Damage: 3 + 1.5 * Level
  *
  * Special:
- * If a knight battles a unit for more than 2.5 seconds, it will
+ * If a knight battles a unit for more than 3 seconds, it will
  * charge forward 100 pixels, dealing damage to every unit it passes through.
  */
 public class Knight extends Entity {
@@ -23,6 +23,9 @@ public class Knight extends Entity {
     private int[][] path;
 
     private int pathCounter = 1;
+
+    // Variables unique to this unit
+    private int previousAttacks = 0;
 
     public Knight(Controller c , int id) {
         session = c;
@@ -125,15 +128,60 @@ public class Knight extends Entity {
     @Override
     public void attack() {
         // Can only hit one unit at a time!
-        if (!onLadder) {
-            for (Entity e : session.underGrounders) {
-                if (this.attackbox.intersects(e.hitbox)) {
-                    if (session.AGKingSpawned) {
-                        e.setHealth(e.getHealth() - this.getDamage() * 2);
-                    } else {
-                        e.setHealth(e.getHealth() - this.getDamage());
+        if (System.currentTimeMillis() - attackTime > attackDelay) {
+            if (!onLadder) {
+                for (Entity e : session.underGrounders) {
+                    if (this.attackbox.intersects(e.hitbox)) {
+                        if (session.AGKingSpawned) {
+                            e.setHealth(e.getHealth() - this.getDamage() * 2);
+                        } else {
+                            e.setHealth(e.getHealth() - this.getDamage());
+                        }
+                        if (attacking) {
+                            previousAttacks++;
+                        }
+                        attacking = true;
+                        attackTime = System.currentTimeMillis();
+                        break;
                     }
-                    break;
+                }
+                attacking = false;
+                previousAttacks = 0;
+            }
+        }
+    }
+
+    @Override
+    public void special() {
+        if (onLadder) {
+            return;
+        }
+        if (previousAttacks >= 3) {
+            previousAttacks = 0; // Reset
+            attacking = false; // Reset
+            for (int i = 0; i < 10; i++) {
+                for (Entity e : session.underGrounders) {
+                    if (this.hitbox.intersects(e.hitbox)) {
+                        if (session.AGKingSpawned) {
+                            e.setHealth(e.getHealth() - this.getDamage() * 2);
+                        } else {
+                            e.setHealth(e.getHealth() - this.getDamage());
+                        }
+                        break;
+                    }
+                }
+                if (facingRight) {
+                    setX(getX() + 10);
+                    if (getX() > path[pathCounter][0]) {
+                        setX(path[pathCounter][0]);
+                        return;
+                    }
+                } else {
+                    setX(getX() - 10);
+                    if (getX() < path[pathCounter][0]) {
+                        setX(path[pathCounter][0]);
+                        return;
+                    }
                 }
             }
         }
