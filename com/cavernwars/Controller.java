@@ -124,5 +124,20 @@ public class Controller extends JFrame {
                 removeUGUnit(id);
             }
         }
+
+        /*
+         *  This would usually be in Entity.java or one of its subclasses,
+         *  but putting it here reduces runtime and achieves the same result.
+         */
+        if (underGrounders.size() == 0) {
+            for (Entity e : aboveGrounders) {
+                e.attacking = false;
+            }
+        }
+        if (aboveGrounders.size() == 0) {
+            for (Entity e : underGrounders) {
+                e.attacking = false;
+            }
+        }
     }
 }
