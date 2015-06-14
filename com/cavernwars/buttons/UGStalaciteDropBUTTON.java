@@ -1,6 +1,7 @@
 package com.cavernwars.buttons;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,6 +15,8 @@ public class UGStalaciteDropBUTTON {
 
     private Controller session;
     private BufferedImage icon;
+
+    public final Rectangle box = new Rectangle(580 , 320 , 40 , 40);
 
     public UGStalaciteDropBUTTON(Controller c) {
         c = session;

@@ -1,6 +1,7 @@
 package com.cavernwars.buttons;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -14,6 +15,8 @@ public class UGBrawlerBUTTON {
 
     private Controller session;
     private BufferedImage icon;
+
+    public final Rectangle box= new Rectangle(640 , 90 , 40 , 40);
 
     public UGBrawlerBUTTON(Controller c) {
         c = session;
