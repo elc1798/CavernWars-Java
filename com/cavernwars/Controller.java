@@ -7,10 +7,8 @@ import javax.swing.JFrame;
 import com.cavernwars.GUI.GfxRenderer;
 import com.cavernwars.GUI.MouseInterpreter;
 import com.cavernwars.entities.Entity;
-import com.cavernwars.entities.aboveground.Engineer;
-import com.cavernwars.entities.aboveground.Knight;
-import com.cavernwars.entities.aboveground.Priest;
-import com.cavernwars.entities.aboveground.Scout;
+import com.cavernwars.entities.aboveground.*;
+import com.cavernwars.entities.underground.*;
 import com.cavernwars.entities.underground.towers.Trap;
 
 @SuppressWarnings("serial")
@@ -55,6 +53,7 @@ public class Controller extends JFrame {
         aboveGrounders.add(new Knight(this , 1));
         aboveGrounders.add(new Priest(this , 2));
         aboveGrounders.add(new Scout(this , 3));
+        underGrounders.add(new Berserker(this , 0));
 
         for (int i = 0; i < 5; i++) {
             AGLevels[i] = 1;
