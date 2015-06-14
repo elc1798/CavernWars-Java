@@ -8,7 +8,7 @@ public class AGPriestBUTTON {
     private Controller session;
 
     public AGPriestBUTTON(Controller c) {
-        c = session;
+        session = c;
     }
 
     public void spawn() {

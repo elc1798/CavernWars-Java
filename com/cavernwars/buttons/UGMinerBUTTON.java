@@ -19,7 +19,7 @@ public class UGMinerBUTTON {
     public final Rectangle box = new Rectangle(600 , 150 , 40 , 40);
 
     public UGMinerBUTTON(Controller c) {
-        c = session;
+        session = c;
         try {
             icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/Miner.png").toURI()));
         } catch (Exception e) {

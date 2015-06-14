@@ -19,7 +19,7 @@ public class UGStalaciteDropBUTTON {
     public final Rectangle box = new Rectangle(580 , 320 , 40 , 40);
 
     public UGStalaciteDropBUTTON(Controller c) {
-        c = session;
+        session = c;
         try {
             icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/StalaciteDrop.png").toURI()));
         } catch (Exception e) {

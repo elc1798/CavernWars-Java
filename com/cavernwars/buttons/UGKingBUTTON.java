@@ -19,7 +19,7 @@ public class UGKingBUTTON {
     public final Rectangle box = new Rectangle(790 , 150 , 40 , 40);
 
     public UGKingBUTTON(Controller c) {
-        c = session;
+        session = c;
         try {
             icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/King.png").toURI()));
         } catch (Exception e) {

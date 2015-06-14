@@ -8,7 +8,7 @@ public class AGKnightBUTTON {
     private Controller session;
 
     public AGKnightBUTTON(Controller c) {
-        c = session;
+        session = c;
     }
 
     public void spawn() {

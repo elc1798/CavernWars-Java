@@ -19,7 +19,7 @@ public class UGBrawlerBUTTON {
     public final Rectangle box= new Rectangle(640 , 90 , 40 , 40);
 
     public UGBrawlerBUTTON(Controller c) {
-        c = session;
+        session = c;
         try {
             icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/Brawler.png").toURI()));
         } catch (Exception e) {

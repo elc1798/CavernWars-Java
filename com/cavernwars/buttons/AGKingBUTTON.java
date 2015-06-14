@@ -8,7 +8,7 @@ public class AGKingBUTTON {
     private Controller session;
 
     public AGKingBUTTON(Controller c) {
-        c = session;
+        session = c;
     }
 
     public void spawn() {

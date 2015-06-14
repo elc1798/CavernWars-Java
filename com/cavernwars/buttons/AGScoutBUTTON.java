@@ -8,7 +8,7 @@ public class AGScoutBUTTON {
     private Controller session;
 
     public AGScoutBUTTON(Controller c) {
-        c = session;
+        session = c;
     }
 
     public void spawn() {

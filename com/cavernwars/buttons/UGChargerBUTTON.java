@@ -19,7 +19,7 @@ public class UGChargerBUTTON {
     public final Rectangle box = new Rectangle(710 , 90 , 40 , 40);
 
     public UGChargerBUTTON(Controller c) {
-        c = session;
+        session = c;
         try {
             icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/Charger.png").toURI()));
         } catch (Exception e) {

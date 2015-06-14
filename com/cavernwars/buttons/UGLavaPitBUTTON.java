@@ -19,7 +19,7 @@ public class UGLavaPitBUTTON {
     public final Rectangle box = new Rectangle(700 , 320 , 40 , 40);
 
     public UGLavaPitBUTTON(Controller c) {
-        c = session;
+        session = c;
         try {
             icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/LavaPit.png").toURI()));
         } catch (Exception e) {

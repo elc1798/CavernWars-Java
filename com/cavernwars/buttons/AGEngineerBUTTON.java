@@ -8,7 +8,7 @@ public class AGEngineerBUTTON {
     private Controller session;
 
     public AGEngineerBUTTON(Controller c) {
-        c = session;
+        session = c;
     }
 
     public void spawn() {

@@ -19,7 +19,7 @@ public class UGBerserkerBUTTON {
     public final Rectangle box = new Rectangle(570 , 90 , 40 , 40);
 
     public UGBerserkerBUTTON(Controller c) {
-        c = session;
+        session = c;
         try {
             icon = ImageIO.read(new File(getClass().getResource("/resources/buttons/Berserker.png").toURI()));
         } catch (Exception e) {
