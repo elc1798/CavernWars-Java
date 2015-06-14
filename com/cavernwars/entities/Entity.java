@@ -18,6 +18,7 @@ public abstract class Entity {
      */
     public boolean show = true;
 
+    // Game Session info
     public Controller session;
 
     // Unit information:
@@ -89,17 +90,11 @@ public abstract class Entity {
     };
 
     // Set functions for unit information
-    public void setX(int _x) {
-        x = _x;
-    }
+    public void setX(int _x) {x = _x;}
 
-    public void setY(int _y) {
-        y = _y;
-    }
+    public void setY(int _y) {y = _y;}
 
-    public void setMaxHealth(int _mHealth) {
-        maxHealth = _mHealth;
-    }
+    public void setMaxHealth(int _mHealth) {maxHealth = _mHealth;}
 
     public void setHealth(int _health) {
         health = _health;
@@ -118,9 +113,7 @@ public abstract class Entity {
         }
     }
 
-    public void setDamage(int _damage) {
-        damage = _damage;
-    }
+    public void setDamage(int _damage) {damage = _damage;}
 
     public void setSprite(String filename) {
         try {
