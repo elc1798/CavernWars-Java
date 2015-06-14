@@ -47,6 +47,11 @@ public class AGKing extends Entity {
         facingRight = true;
         onLadder = false;
         attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1]);
+
+        // Apply special effect!
+        for (Entity e : session.aboveGrounders) {
+            e.setHealth(e.getMaxHealth());
+        }
     }
 
     @Override
@@ -83,6 +88,19 @@ public class AGKing extends Entity {
             attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 40 , Entity.SPRITESIZE[1]);
         } else {
             attackbox = new Rectangle(getX() - 40, getY() , Entity.SPRITESIZE[0] + 80 , Entity.SPRITESIZE[1]);
+        }
+    }
+
+    @Override
+    public void attack() {
+        // Can only hit one unit at a time!
+        if (!onLadder) {
+            for (Entity e : session.underGrounders) {
+                if (this.attackbox.intersects(e.hitbox)) {
+                    e.setHealth(e.getHealth() - this.getDamage());
+                    break;
+                }
+            }
         }
     }
 }
