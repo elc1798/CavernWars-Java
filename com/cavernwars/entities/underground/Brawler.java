@@ -26,19 +26,14 @@ public class Brawler extends Entity {
         session = c;
         ent_ID = id;
 
-        /*
-         * Each element in 'path' is formated like such:
-         * {xcoor to start at , ycoor to start at , seconds to reach next destination}
-         * -1 is used to denote an infinite amount of time.
-         */
         path = Entity.UGPATH;
         this.setSprite("/resources/TestSprite.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
-        this.setMaxHealth((int)session.UGLevels[1] + 100);
-        this.setHealth((int)session.UGLevels[1] + 100);
-        this.setSpeed(2);
-        this.setDamage((int)session.UGLevels[1] + 5);
+        this.setMaxHealth((int)session.UGLevels[1] + 4);
+        this.setHealth((int)session.UGLevels[1] + 4);
+        this.setSpeed(1);
+        this.setDamage((int)session.UGLevels[1] + 2);
 
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
