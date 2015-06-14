@@ -98,8 +98,8 @@ public abstract class Entity {
 
     public void setSpeed(int _speed) {
         speed = _speed;
-        if (speed > 8) {
-            speed = 8;
+        if (speed > 5) {
+            speed = 5;
         }
     }
 
@@ -126,7 +126,9 @@ public abstract class Entity {
     }
 
     public void update() {
-        move();
+        try {
+            move();
+        } catch(Exception e) {}
         attack();
         special();
     }
