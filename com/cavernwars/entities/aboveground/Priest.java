@@ -14,7 +14,7 @@ import com.cavernwars.entities.Entity;
  * Damage: 0
  *
  * Special:
- * Will heal all units in a radius based on level by priest level + that unit's level
+ * Will heal all units in a radius based on level by priest level * 2
  */
 public class Priest extends Entity {
 
@@ -22,6 +22,9 @@ public class Priest extends Entity {
     private int[][] path;
 
     private int pathCounter = 1;
+
+    // Unique variables for this unit
+    private boolean attacked = false;
 
     public Priest(Controller c , int id) {
         session = c;
@@ -114,10 +117,30 @@ public class Priest extends Entity {
             setY(getY() + dy);
             facingRight = path[pathCounter][0] - path[pathCounter - 1][0] > 0;
         }
-        if (facingRight) {
-            attackbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] + 30 , Entity.SPRITESIZE[1]);
-        } else {
-            attackbox = new Rectangle(getX() - 30, getY() , Entity.SPRITESIZE[0] + 60 , Entity.SPRITESIZE[1]);
+        attackbox = new Rectangle(getX() - 50 , getY() - 50 , Entity.SPRITESIZE[0] + 100 , Entity.SPRITESIZE[1] + 100);
+    }
+
+    @Override
+    public void attack() {
+        // Although this unit does not attack, we need to check if it is BEING attacked
+        for (Entity e : session.underGrounders) {
+            if (e.attackbox.intersects(this.hitbox)) {
+                attacked = true;
+                break;
+            }
+        }
+        attacked = false;
+    }
+
+    @Override
+    public void special() {
+        if (System.currentTimeMillis() - attackTime > attackDelay) {
+            for (Entity e : session.aboveGrounders) {
+                if (e.ent_ID != this.ent_ID) {
+                    e.setHealth(e.getHealth() + (int)session.AGLevels[3] * 2);
+                }
+            }
+            attackTime = System.currentTimeMillis();
         }
     }
 }
