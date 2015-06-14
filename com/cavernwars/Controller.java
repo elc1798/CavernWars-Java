@@ -1,14 +1,18 @@
 package com.cavernwars;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import javax.swing.JFrame;
 
 import com.cavernwars.GUI.GfxRenderer;
 import com.cavernwars.GUI.MouseInterpreter;
 import com.cavernwars.entities.Entity;
-import com.cavernwars.entities.aboveground.*;
-import com.cavernwars.entities.underground.*;
+import com.cavernwars.entities.aboveground.Engineer;
+import com.cavernwars.entities.aboveground.Knight;
+import com.cavernwars.entities.aboveground.Priest;
+import com.cavernwars.entities.aboveground.Scout;
+import com.cavernwars.entities.underground.Berserker;
 import com.cavernwars.entities.underground.towers.Trap;
 
 @SuppressWarnings("serial")
@@ -20,6 +24,7 @@ public class Controller extends JFrame {
     public ArrayList<Entity> aboveGrounders = new ArrayList<Entity>();
     public ArrayList<Entity> underGrounders = new ArrayList<Entity>();
     public ArrayList<Trap> traps = new ArrayList<Trap>();
+    public LinkedList<Entity> killQueue = new LinkedList<Entity>(); // For entities that don't die immediately
 
     /*
      * AGLevels Contents:
@@ -100,6 +105,20 @@ public class Controller extends JFrame {
             if (traps.get(i).trap_ID == id) {
                 traps.remove(i);
                 break;
+            }
+        }
+    }
+
+    public void update() {
+        // Update killQueue!
+        while (!killQueue.isEmpty()) {
+            int ground = killQueue.peek().ground;
+            int id = killQueue.peek().ent_ID;
+            killQueue.pop();
+            if (ground == 0) {
+                removeAGUnit(id);
+            } else {
+                removeUGUnit(id);
             }
         }
     }

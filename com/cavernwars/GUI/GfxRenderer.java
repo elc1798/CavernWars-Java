@@ -61,6 +61,7 @@ public class GfxRenderer extends JPanel implements Runnable {
             for (Entity e : session.underGrounders) {
                 e.update();
             }
+            session.update();
             repaint();
             timeDiff = System.currentTimeMillis() - beforeTime;
             sleep = DELAY - timeDiff;

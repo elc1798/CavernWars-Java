@@ -178,7 +178,7 @@ public class Berserker extends Entity {
     public void special() {
         if (berserk) {
             if (System.currentTimeMillis() - berserkStart > berserkLength) {
-                session.removeUGUnit(ent_ID);
+                session.killQueue.add(this);
             } else {
                 super.setHealth(Integer.MAX_VALUE);
             }

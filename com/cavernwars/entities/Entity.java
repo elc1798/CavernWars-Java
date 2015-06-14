@@ -1,5 +1,6 @@
 package com.cavernwars.entities;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -11,6 +12,11 @@ import javax.imageio.ImageIO;
 import com.cavernwars.Controller;
 
 public abstract class Entity {
+
+    /*
+     * FOR TESTING PURPOSES ONLY
+     */
+    public boolean show = true;
 
     public Controller session;
 
@@ -101,11 +107,7 @@ public abstract class Entity {
             health = maxHealth;
         }
         if (health <= 0) {
-            if (ground == 0) {
-                session.removeAGUnit(ent_ID);
-            } else {
-                session.removeUGUnit(ent_ID);
-            }
+            session.killQueue.add(this);
         }
     }
 
@@ -135,6 +137,12 @@ public abstract class Entity {
 
     public void paintComponent(Graphics g , int xcoor , int ycoor) {
         g.drawImage(sprite , xcoor , ycoor , SPRITESIZE[0] , SPRITESIZE[1] , null);
+        if (show) {
+            g.setColor(Color.BLUE);
+            g.drawRect(attackbox.x, attackbox.y, attackbox.width, attackbox.height);
+            g.setColor(Color.GREEN);
+            g.drawRect(hitbox.x, hitbox.y, hitbox.width, hitbox.height);
+        }
         Toolkit.getDefaultToolkit().sync();
     }
 
