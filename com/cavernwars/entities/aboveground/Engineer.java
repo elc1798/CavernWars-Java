@@ -28,7 +28,7 @@ public class Engineer extends Entity {
     private boolean defusing = false;
     private final long defuseTime = 3000; // 3 seconds
     private long defusingStart;
-    private int defusedTrapID;
+    private Trap defusedTrap;
 
     private int pathCounter = 1;
 
@@ -166,7 +166,7 @@ public class Engineer extends Entity {
                 if (this.attackbox.intersects(t.hitbox)) {
                     t.disabled = true;
                     this.setSprite("/resources/entities/ENGINEER-DEFUSING.png");
-                    defusedTrapID = t.trap_ID;
+                    defusedTrap = t;
                     defusingStart = System.currentTimeMillis();
                     break;
                 }
@@ -174,7 +174,7 @@ public class Engineer extends Entity {
         } else {
             if (System.currentTimeMillis() - defusingStart > defuseTime) {
                 defusing = false;
-                session.removeTrap(defusedTrapID);
+                session.trapRemoval.add(defusedTrap);
                 this.setSprite("/resources/entities/ENGINEER.png");
             }
         }

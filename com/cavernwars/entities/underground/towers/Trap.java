@@ -8,7 +8,12 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-public class Trap {
+import com.cavernwars.Controller;
+
+public abstract class Trap {
+
+    // Game session
+    public Controller session;
 
     // Information
     private int x;
@@ -21,6 +26,7 @@ public class Trap {
     public Rectangle attackbox;
     public boolean disabled = false;
     public int trap_ID;
+    public int cost;
 
     public int[] SPRITESIZE = {20 , 20};
 
@@ -52,8 +58,8 @@ public class Trap {
 
     public void attack() {}
 
-    public void paintComponent(Graphics g , int xcoor , int ycoor) {
-        g.drawImage(sprite , xcoor , ycoor , SPRITESIZE[0] , SPRITESIZE[1] , null);
+    public void paintComponent(Graphics g) {
+        g.drawImage(sprite , getX() , getY() , SPRITESIZE[0] , SPRITESIZE[1] , null);
         Toolkit.getDefaultToolkit().sync();
     }
 

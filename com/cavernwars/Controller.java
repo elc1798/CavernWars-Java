@@ -38,6 +38,7 @@ public class Controller extends JFrame {
     public ArrayList<Entity> underGrounders = new ArrayList<Entity>();
     public ArrayList<Trap> traps = new ArrayList<Trap>();
     public LinkedList<Entity> killQueue = new LinkedList<Entity>(); // For entities that don't die immediately
+    public LinkedList<Trap> trapRemoval = new LinkedList<Trap>(); // Queue for trap removal
 
     // Player buttons:
     public UGKingBUTTON b0;
@@ -156,6 +157,13 @@ public class Controller extends JFrame {
             } else {
                 removeUGUnit(id);
             }
+        }
+
+        // Remove used traps
+        while(!trapRemoval.isEmpty()) {
+            int id = trapRemoval.peek().trap_ID;
+            trapRemoval.pop();
+            removeTrap(id);
         }
 
         /*
