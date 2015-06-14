@@ -35,6 +35,8 @@ public class Scout extends Entity {
         this.setSpeed(2);
         this.setDamage((int)session.AGLevels[4] + 2);
 
+        cost = 150 + 60 * (int)session.AGLevels[4];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;

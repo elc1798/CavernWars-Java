@@ -35,6 +35,8 @@ public class Miner extends Entity {
         this.setSpeed(1);
         this.setDamage((int)session.UGLevels[4] + 1);
 
+        cost = 120 + 40 * (int)session.UGLevels[4];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;

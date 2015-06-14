@@ -42,6 +42,8 @@ public class Berserker extends Entity {
         this.setSpeed(2);
         this.setDamage((int)session.UGLevels[1] + 5);
 
+        cost = 150 + 60 * (int)session.UGLevels[1];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;

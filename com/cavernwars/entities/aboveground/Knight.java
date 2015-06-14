@@ -39,6 +39,8 @@ public class Knight extends Entity {
         this.setSpeed(1);
         this.setDamage((int)(session.AGLevels[2] * 1.5) + 3);
 
+        cost = 200 + 75 * (int)session.AGLevels[2];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;

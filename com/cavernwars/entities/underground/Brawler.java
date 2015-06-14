@@ -35,6 +35,8 @@ public class Brawler extends Entity {
         this.setSpeed(1);
         this.setDamage((int)session.UGLevels[2] + 2);
 
+        cost = 100 + 50 * (int)session.UGLevels[2];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;

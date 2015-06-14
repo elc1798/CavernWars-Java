@@ -45,6 +45,8 @@ public class Engineer extends Entity {
         this.setSpeed(1);
         this.setDamage((int)session.AGLevels[1] + 1);
 
+        cost = 300 + 50 * (int)session.AGLevels[1];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;

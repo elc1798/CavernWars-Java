@@ -35,6 +35,8 @@ public class Charger extends Entity {
         this.setSpeed(2);
         this.setDamage((int)session.UGLevels[3] * 2 + 1);
 
+        cost = 75 + 25 * (int)session.UGLevels[3];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;

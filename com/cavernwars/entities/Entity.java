@@ -30,6 +30,8 @@ public abstract class Entity {
     private int damage;
     private BufferedImage sprite;
 
+    public int cost;
+
     // Data required for unit movement and attacking
     public Rectangle hitbox;
     public Rectangle attackbox;

@@ -38,6 +38,8 @@ public class Priest extends Entity {
         this.setSpeed(1);
         this.setDamage(0);
 
+        cost = 100 + 200 * (int)session.AGLevels[3];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;
@@ -135,6 +137,9 @@ public class Priest extends Entity {
                 attacked = true;
                 break;
             }
+            attacked = false;
+        }
+        if (session.underGrounders.size() == 0) {
             attacked = false;
         }
     }

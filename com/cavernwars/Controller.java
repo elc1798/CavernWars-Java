@@ -22,8 +22,12 @@ import com.cavernwars.entities.underground.towers.Trap;
 @SuppressWarnings("serial")
 public class Controller extends JFrame {
 
+    // Game Data
     private GfxRenderer graphicsSession;
     private MouseInterpreter mouseSession;
+
+    public int AIMoney;
+    public int playerMoney;
 
     public ArrayList<Entity> aboveGrounders = new ArrayList<Entity>();
     public ArrayList<Entity> underGrounders = new ArrayList<Entity>();
@@ -63,6 +67,9 @@ public class Controller extends JFrame {
             AGLevels[i] = 1;
             UGLevels[i] = 1;
         }
+
+        AIMoney = 800;
+        playerMoney = 800;
 
         // Testing:
         aboveGrounders.add(new Engineer(this , 0));

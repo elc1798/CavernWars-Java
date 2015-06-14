@@ -39,6 +39,8 @@ public class UGKing extends Entity {
         setSpeed(1);
         setDamage((int)session.UGLevels[0] + 5);
 
+        cost = 1000 + 100 * (int)session.UGLevels[0];
+
         hitbox = new Rectangle(getX() , getY() , Entity.SPRITESIZE[0] , Entity.SPRITESIZE[1]);
         facingRight = true;
         onLadder = false;
