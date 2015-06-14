@@ -39,6 +39,12 @@ public class GfxRenderer extends JPanel implements Runnable {
         for (Entity e : session.underGrounders) {
             e.paintComponent(g , e.getX() , e.getY());
         }
+        // Button rendering:
+        session.b0.paintComponent(g);
+        session.b1.paintComponent(g);
+        session.b2.paintComponent(g);
+        session.b3.paintComponent(g);
+        session.b4.paintComponent(g);
         Toolkit.getDefaultToolkit().sync();
     }
 

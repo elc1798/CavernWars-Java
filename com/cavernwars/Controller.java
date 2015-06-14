@@ -7,6 +7,11 @@ import javax.swing.JFrame;
 
 import com.cavernwars.GUI.GfxRenderer;
 import com.cavernwars.GUI.MouseInterpreter;
+import com.cavernwars.buttons.UGBerserkerBUTTON;
+import com.cavernwars.buttons.UGBrawlerBUTTON;
+import com.cavernwars.buttons.UGChargerBUTTON;
+import com.cavernwars.buttons.UGKingBUTTON;
+import com.cavernwars.buttons.UGMinerBUTTON;
 import com.cavernwars.entities.Entity;
 import com.cavernwars.entities.aboveground.AGKing;
 import com.cavernwars.entities.aboveground.Engineer;
@@ -34,6 +39,12 @@ public class Controller extends JFrame {
     public ArrayList<Trap> traps = new ArrayList<Trap>();
     public LinkedList<Entity> killQueue = new LinkedList<Entity>(); // For entities that don't die immediately
 
+    // Player buttons:
+    public UGKingBUTTON b0;
+    public UGBerserkerBUTTON b1;
+    public UGBrawlerBUTTON b2;
+    public UGChargerBUTTON b3;
+    public UGMinerBUTTON b4;
     /*
      * AGLevels Contents:
      * Index | Data
@@ -70,6 +81,12 @@ public class Controller extends JFrame {
 
         AIMoney = 800;
         playerMoney = 800;
+
+        b0 = new UGKingBUTTON(this);
+        b1 = new UGBerserkerBUTTON(this);
+        b2 = new UGBrawlerBUTTON(this);
+        b3 = new UGChargerBUTTON(this);
+        b4 = new UGMinerBUTTON(this);
 
         // Testing:
         aboveGrounders.add(new Engineer(this , 0));
