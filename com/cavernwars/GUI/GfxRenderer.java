@@ -54,12 +54,6 @@ public class GfxRenderer extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(playScreen, 0, 0, null);
-        for (Entity e : session.aboveGrounders) {
-            e.paintComponent(g , e.getX() , e.getY());
-        }
-        for (Entity e : session.underGrounders) {
-            e.paintComponent(g , e.getX() , e.getY());
-        }
         // Button rendering:
         session.b0.paintComponent(g);
         session.b1.paintComponent(g);
@@ -72,6 +66,12 @@ public class GfxRenderer extends JPanel implements Runnable {
         session.getCurrentDescriptor().paintComponent(g);
         // Healthbar rendering:
         session.getHealthBars().paintComponent(g);
+        for (Entity e : session.aboveGrounders) {
+            e.paintComponent(g);
+        }
+        for (Entity e : session.underGrounders) {
+            e.paintComponent(g);
+        }
         Toolkit.getDefaultToolkit().sync();
     }
 

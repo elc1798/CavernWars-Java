@@ -117,6 +117,7 @@ public class Controller extends JFrame {
     private void startMouseInterpreter() {
         mouseSession = new MouseInterpreter(this);
         addMouseListener(mouseSession);
+        addMouseMotionListener(mouseSession);
     }
 
     public Descriptor getCurrentDescriptor() {

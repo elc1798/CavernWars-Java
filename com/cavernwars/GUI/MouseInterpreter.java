@@ -1,13 +1,13 @@
 package com.cavernwars.GUI;
 
-import java.awt.MouseInfo;
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import com.cavernwars.Controller;
 
-public class MouseInterpreter implements MouseListener {
+public class MouseInterpreter implements MouseListener , MouseMotionListener {
 
     private Controller session;
     private Rectangle cursor;
@@ -15,6 +15,8 @@ public class MouseInterpreter implements MouseListener {
     private int buttonHoverID;
     private boolean placing;
     private int placingID;
+    private int x;
+    private int y;
 
     public MouseInterpreter(Controller session) {
         this.session = session;
@@ -26,15 +28,15 @@ public class MouseInterpreter implements MouseListener {
     }
 
     public int mouseX() {
-        return MouseInfo.getPointerInfo().getLocation().x;
+        return x;
     }
 
     public int mouseY() {
-        return MouseInfo.getPointerInfo().getLocation().y;
+        return y;
     }
 
     public int updateMouseLocation() {
-        cursor = new Rectangle(mouseX() , mouseY() , 2 , 2);
+        cursor = new Rectangle(mouseX() , mouseY() , 1 , 1);
         if (cursor.intersects(session.b0.box)) {
             buttonHoverID = 0;
         } else if (cursor.intersects(session.b1.box)) {
@@ -132,6 +134,16 @@ public class MouseInterpreter implements MouseListener {
 
     @Override
     public void mouseExited(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        x = e.getX();
+        y = e.getY();
     }
 
 }
