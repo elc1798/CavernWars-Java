@@ -69,6 +69,8 @@ public class Controller extends JFrame {
      * 4 | Miner
      */
     public float[] UGLevels = new float[5];
+    public int AGUnitCounter = 0;
+    public int UGUnitCounter = 0;
     public int trapIDCounter = 0;
 
     // Booleans to keep track of King buffs

@@ -12,7 +12,8 @@ public class AGScoutBUTTON {
     }
 
     public void spawn() {
-        Scout newbie = new Scout(session , (int)(session.AGLevels[4] * 10));
+        Scout newbie = new Scout(session , session.AGUnitCounter);
+        session.AGUnitCounter += 1;
         session.AGLevels[4] += 0.1;
         session.aboveGrounders.add(newbie);
         session.AIMoney -= newbie.cost;

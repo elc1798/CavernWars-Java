@@ -28,7 +28,8 @@ public class UGBerserkerBUTTON {
     }
 
     public void spawn() {
-        Berserker newbie = new Berserker(session , (int)(session.UGLevels[1] * 10));
+        Berserker newbie = new Berserker(session , session.UGUnitCounter);
+        session.UGUnitCounter += 1;
         session.UGLevels[1] += 0.1;
         session.underGrounders.add(newbie);
         session.playerMoney -= newbie.cost;

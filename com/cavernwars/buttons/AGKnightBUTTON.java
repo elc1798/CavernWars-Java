@@ -12,7 +12,8 @@ public class AGKnightBUTTON {
     }
 
     public void spawn() {
-        Knight newbie = new Knight(session , (int)(session.AGLevels[2] * 10));
+        Knight newbie = new Knight(session , session.AGUnitCounter);
+        session.AGUnitCounter += 1;
         session.AGLevels[2] += 0.1;
         session.aboveGrounders.add(newbie);
         session.AIMoney -= newbie.cost;

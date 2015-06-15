@@ -28,7 +28,8 @@ public class UGBrawlerBUTTON {
     }
 
     public void spawn() {
-        Brawler newbie = new Brawler(session , (int)(session.UGLevels[2] * 10));
+        Brawler newbie = new Brawler(session , session.UGUnitCounter);
+        session.UGUnitCounter += 1;
         session.UGLevels[2] += 0.1;
         session.underGrounders.add(newbie);
         session.playerMoney -= newbie.cost;

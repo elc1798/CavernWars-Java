@@ -12,7 +12,8 @@ public class AGPriestBUTTON {
     }
 
     public void spawn() {
-        Priest newbie = new Priest(session , (int)(session.AGLevels[3] * 10));
+        Priest newbie = new Priest(session , session.AGUnitCounter);
+        session.AGUnitCounter += 1;
         session.AGLevels[3] += 0.1;
         session.aboveGrounders.add(newbie);
         session.AIMoney -= newbie.cost;

@@ -28,7 +28,8 @@ public class UGMinerBUTTON {
     }
 
     public void spawn() {
-        Miner newbie = new Miner(session , (int)(session.UGLevels[4] * 10));
+        Miner newbie = new Miner(session , session.UGUnitCounter);
+        session.UGUnitCounter += 1;
         session.UGLevels[4] += 0.1;
         session.underGrounders.add(newbie);
         session.playerMoney -= newbie.cost;

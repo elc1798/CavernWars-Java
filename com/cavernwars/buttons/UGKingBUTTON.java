@@ -28,7 +28,8 @@ public class UGKingBUTTON {
     }
 
     public void spawn() {
-        UGKing newbie = new UGKing(session , (int)(session.UGLevels[0] * 10));
+        UGKing newbie = new UGKing(session , session.UGUnitCounter);
+        session.UGUnitCounter += 1;
         session.UGLevels[0] += 0.1;
         session.underGrounders.add(newbie);
         session.playerMoney -= newbie.cost;

@@ -28,7 +28,8 @@ public class UGChargerBUTTON {
     }
 
     public void spawn() {
-        Charger newbie = new Charger(session , (int)(session.UGLevels[3] * 10));
+        Charger newbie = new Charger(session , session.UGUnitCounter);
+        session.UGUnitCounter += 1;
         session.UGLevels[3] += 0.1;
         session.underGrounders.add(newbie);
         session.playerMoney -= newbie.cost;

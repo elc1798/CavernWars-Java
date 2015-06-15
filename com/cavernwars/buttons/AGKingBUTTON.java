@@ -12,7 +12,8 @@ public class AGKingBUTTON {
     }
 
     public void spawn() {
-        AGKing newbie = new AGKing(session , (int)(session.AGLevels[0] * 10));
+        AGKing newbie = new AGKing(session , session.AGUnitCounter);
+        session.AGUnitCounter += 1;
         session.AGLevels[0] += 0.1;
         session.aboveGrounders.add(newbie);
         session.AIMoney -= newbie.cost;

@@ -12,7 +12,8 @@ public class AGEngineerBUTTON {
     }
 
     public void spawn() {
-        Engineer newbie = new Engineer(session , (int)(session.AGLevels[1] * 10));
+        Engineer newbie = new Engineer(session , session.AGUnitCounter);
+        session.AGUnitCounter += 1;
         session.AGLevels[1] += 0.1;
         session.aboveGrounders.add(newbie);
         session.AIMoney -= newbie.cost;
