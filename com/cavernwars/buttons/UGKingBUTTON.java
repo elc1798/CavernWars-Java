@@ -16,7 +16,7 @@ public class UGKingBUTTON {
     private Controller session;
     private BufferedImage icon;
 
-    public final Rectangle box = new Rectangle(790 , 150 , 40 , 40);
+    public final Rectangle box = new Rectangle(680 , 150 , 40 , 40);
 
     public UGKingBUTTON(Controller c) {
         session = c;
@@ -37,7 +37,7 @@ public class UGKingBUTTON {
     }
 
     public void paintComponent(Graphics g) {
-        g.drawImage(icon , 790 , 150 , 40 , 40 , null);
+        g.drawImage(icon , 680 , 150 , 40 , 40 , null);
         Toolkit.getDefaultToolkit().sync();
     }
 }

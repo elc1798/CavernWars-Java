@@ -31,7 +31,7 @@ public class UGKing extends Entity {
         ent_ID = id;
 
         path = Entity.UGPATH;
-        setSprite("/resources/TestSprite.png");
+        setSprite("/resources/UGKing.png");
         setX(path[0][0]);
         setY(path[0][1]);
         setMaxHealth((int)session.UGLevels[0] + 8);

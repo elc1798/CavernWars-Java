@@ -16,7 +16,7 @@ public abstract class Entity {
     /*
      * FOR TESTING PURPOSES ONLY
      */
-    public boolean show = true;
+    public boolean show = false;
 
     // Game Session info
     public Controller session;

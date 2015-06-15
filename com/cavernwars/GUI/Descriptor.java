@@ -79,7 +79,7 @@ public class Descriptor {
                 description += "All units that walk into a lava pit will die.";
                 break;
             case -1:
-                description = "";
+                description = "Money: " + session.playerMoney;
                 break;
             default:
                 description = "";

@@ -34,6 +34,9 @@ public class Controller extends JFrame {
     public int AIHealth;
     public int playerHealth;
 
+    private long lastTimeMoneyInject;
+    private final long moneyInjectTimer = 1500;
+
     public ArrayList<Entity> aboveGrounders = new ArrayList<Entity>();
     public ArrayList<Entity> underGrounders = new ArrayList<Entity>();
     public ArrayList<Trap> traps = new ArrayList<Trap>();
@@ -91,6 +94,8 @@ public class Controller extends JFrame {
         playerMoney = 800;
         AIHealth = 200;
         playerHealth = 200;
+
+        lastTimeMoneyInject = System.currentTimeMillis();
 
         b0 = new UGKingBUTTON(this);
         b1 = new UGBerserkerBUTTON(this);
@@ -165,6 +170,13 @@ public class Controller extends JFrame {
             graphicsSession.endScreen(1);
         } else if (playerHealth <= 0) {
             graphicsSession.endScreen(0);
+        }
+
+        // Give money!
+        if (System.currentTimeMillis() - lastTimeMoneyInject > moneyInjectTimer) {
+            AIMoney += 100;
+            playerMoney += 100;
+            lastTimeMoneyInject = System.currentTimeMillis();
         }
 
         // Run AI decision

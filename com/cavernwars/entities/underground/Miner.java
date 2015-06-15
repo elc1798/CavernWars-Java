@@ -27,7 +27,7 @@ public class Miner extends Entity {
         ent_ID = id;
 
         path = Entity.UGPATH;
-        this.setSprite("/resources/TestSprite.png");
+        this.setSprite("/resources/UGMiner.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
         this.setMaxHealth((int)session.UGLevels[4] + 5);
