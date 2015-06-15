@@ -144,8 +144,12 @@ public abstract class Entity {
     public void attack() {}
     public void special() {}
 
-    public void paintComponent(Graphics g , int xcoor , int ycoor) {
-        g.drawImage(sprite , xcoor , ycoor , SPRITESIZE[0] , SPRITESIZE[1] , null);
+    public void paintComponent(Graphics g) {
+        if (facingRight) {
+            g.drawImage(sprite , getX() , getY() , SPRITESIZE[0] , SPRITESIZE[1] , null);
+        } else {
+            g.drawImage(sprite , getX() + SPRITESIZE[0] , getY() , -SPRITESIZE[0] , SPRITESIZE[1] , null);
+        }
         if (show) {
             g.setColor(Color.BLUE);
             g.drawRect(attackbox.x, attackbox.y, attackbox.width, attackbox.height);
