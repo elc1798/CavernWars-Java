@@ -37,7 +37,7 @@ public class Engineer extends Entity {
         ent_ID = id;
 
         path = Entity.AGPATH;
-        this.setSprite("/resources/TestSprite.png");
+        this.setSprite("/resources/AGEngineer.png");
         this.setX(path[0][0]);
         this.setY(path[0][1]);
         this.setMaxHealth((int)session.AGLevels[1] + 4);
