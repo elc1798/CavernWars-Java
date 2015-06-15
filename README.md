@@ -28,6 +28,7 @@ AM on June 14. As such, it is not complete and some features are intended.
 + Functioning traps
 + Pause screen
 + Sound and volume control options
++ Executing from runnable JAR file
 
 ## Known Bugs
 
