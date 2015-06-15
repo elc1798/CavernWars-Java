@@ -25,7 +25,7 @@ public class HealthBars {
 
     public void paintComponent(Graphics g) {
         g.drawImage(icon , 5 , 15 , session.AIHealth , 5 , null);
-        g.drawImage(icon , 255 , 15 , session.playerHealth , 5 , null);
+        g.drawImage(icon , 520 , 15 , -session.playerHealth , 5 , null);
         Toolkit.getDefaultToolkit().sync();
     }
 }
