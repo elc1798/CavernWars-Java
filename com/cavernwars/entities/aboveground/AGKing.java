@@ -31,7 +31,7 @@ public class AGKing extends Entity {
         ent_ID = id;
 
         path = Entity.AGPATH;
-        setSprite("/resources/TestSprite.png");
+        setSprite("/resources/AGKing.png");
         setX(path[0][0]);
         setY(path[0][1]);
         setMaxHealth((int)session.AGLevels[0] + 8);
