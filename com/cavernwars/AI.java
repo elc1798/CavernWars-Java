@@ -10,7 +10,7 @@ public class AI {
 
     private Controller session;
     private long decisionTimer;
-    private final long decisionLength = 3000;
+    private final long decisionLength = 5000;
 
     AGKingBUTTON AIb0;
     AGEngineerBUTTON AIb1;
